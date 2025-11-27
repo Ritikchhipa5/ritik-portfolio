@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} antialiased`}
+        className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
       >
         {children}
       </body>
