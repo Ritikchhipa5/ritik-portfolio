@@ -36,6 +36,13 @@ function HeroSection() {
           alt="Ritik"
           className=" z-9 md:h-[70vh] object-contain w-auto"
         />
+        <Image
+          src={IMAGES.faded_white.src}
+          width={600}
+          height={600}
+          alt="Ritik"
+          className=" z-9 absolute  left-0 right-0 bottom-0 w-full  object-contain "
+        />
       </div>
     </div>
   );
@@ -79,9 +86,9 @@ const BottomSection = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-full bg-black text-white font-inter py-3 px-6 ">
-        <div className=" flex items-center gap-2">
-          <LucideArrowRight size={22} /> Get on touch
+      <div className="rounded-full bg-black text-white font-inter font-medium py-3 px-6 ">
+        <div className=" flex items-center gap-2 capitalize">
+          <LucideArrowRight size={22} /> Get touch
         </div>
       </div>
     </div>
