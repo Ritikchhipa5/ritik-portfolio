@@ -1,5 +1,7 @@
 import { IMAGES } from "@/assets/images";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Magnetic } from "@/components/ui/shadcn-io/magnetic";
 import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -26,12 +28,14 @@ function HeroSection() {
           alt="Ritik"
           className=" z-8 md:h-[70vh] object-contain w-auto"
         />
-        <div className="flex z-10 absolute scale-75 sm:scale-100 left-10 md:left-1/5 md:bottom-[40%] bottom-[20%] items-center gap-3 bg-white rounded-full px-4 py-2 mb-12">
-          <div className="w-3 h-3 bg-lime-400 rounded-full animate-pulse"></div>
-          <span className="text-gray-700 font-inter text-sm font-medium">
-            Available for new projects
-          </span>
-        </div>
+        <Magnetic>
+          <div className="flex z-10 absolute scale-75 sm:scale-100 left-10 md:left-1/5 md:bottom-[40%] bottom-[20%] items-center gap-3 bg-white rounded-full px-4 py-2 mb-12">
+            <div className="w-3 h-3 bg-lime-400 rounded-full animate-pulse"></div>
+            <span className="text-gray-700 font-inter text-sm font-medium">
+              Available for new projects
+            </span>
+          </div>
+        </Magnetic>
         <div className="absolute z-10 hidden sm:block right-4 md:right-10 font-inter font-normal bottom-[40%]      max-w-[300px] text-gray-900 text-sm  ">
           Creates and implements digital solutions, transforming concepts into
           functional technology
@@ -106,11 +110,11 @@ const BottomSection = () => {
           </div>
         </div>
       </div>
-      <div className="rounded-full bg-black text-white font-inter font-medium py-3 px-6 ">
-        <div className=" flex items-center gap-2 capitalize">
-          <LucideArrowRight size={22} /> Get touch
-        </div>
-      </div>
+
+      <Button size="xl" className="group my-10 rounded-full">
+        <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
+        <span className="text-base"> Get Touch</span>
+      </Button>
     </div>
   );
 };

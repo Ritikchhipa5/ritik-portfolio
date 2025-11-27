@@ -1,19 +1,19 @@
 import { IMAGES } from "@/assets/images";
+import { Button } from "@/components/ui/button";
 import { LucideArrowRight } from "lucide-react";
-import React from "react";
 
 function Footer() {
   return (
-    <footer className="w-full relative bg-white pt-16 ">
+    <footer className="w-full  relative bg-white pt-16 ">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-90"
+        className="absolute inset-0 bg-contain bg-no-repeat bg-top opacity-90"
         style={{
-          backgroundImage: `url(${IMAGES.ellipse.src})`,
+          backgroundImage: `url(${IMAGES.ellipse_footer.src})`,
         }}
       />
       {/* Navigation */}
       <div className="z-10 relative overflow-hidden">
-        <div className="max-w-7xl px-6 mx-auto space-y-10 ">
+        <div className="max-w-7xl px-6 mx-auto  ">
           <div className="w-full text-center space-y-4 ">
             <h1 className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal">
               Let’s make it happen
@@ -23,14 +23,14 @@ function Footer() {
               always open to new opportunities, collaborations, and creative
               challenges. Let's work together to bring your ideas to life
             </p>
-            <div className="rounded-full mt-10 bg-black inline-block text-white font-dm-sans py-3 px-6 ">
-              <div className=" flex items-center gap-2 capitalize">
-                <LucideArrowRight size={22} /> Get touch
-              </div>
-            </div>
+
+            <Button size="xl" className="group my-10 rounded-full">
+              <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
+              <span className="text-base"> Get Touch</span>
+            </Button>
           </div>
-          <div className="flex items-center justify-between">
-            <nav className="flex gap-10 py-12 text-sm font-dm-sans text-gray-700 mb-10">
+          <div className="flex mb-16 gap-10 md:flex-row flex-col items-center justify-between">
+            <nav className="flex gap-10    text-sm font-dm-sans text-gray-700 ">
               <a href="#" className="hover:text-black">
                 Home
               </a>
@@ -51,13 +51,13 @@ function Footer() {
         </div>
 
         {/* Big Name */}
-        <h1
-          className=" font-newsreader text-center -bottom-[20px] relative   italic  text-[16vw]  leading-[0.9]  text-black  font-light
-    "
-        >
-          Ritik Chhipa
-        </h1>
       </div>
+      <h1
+        className=" font-newsreader text-center bottom-0 relative   italic  text-[18vw]  leading-[0.9]  text-black  font-light
+    "
+      >
+        Ritik Chhipa
+      </h1>
     </footer>
   );
 }
