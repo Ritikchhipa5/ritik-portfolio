@@ -49,11 +49,9 @@ function Footer() {
             </p>
           </div>
         </div>
-
-        {/* Big Name */}
       </div>
       <h1
-        className=" font-newsreader text-center bottom-0 relative   italic  text-[18vw]  leading-[0.9]  text-black  font-light
+        className=" font-newsreader text-center bottom-0 relative   italic  text-[14vw]  leading-[0.9]  text-black  font-light
     "
       >
         Ritik Chhipa

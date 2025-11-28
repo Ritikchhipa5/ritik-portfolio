@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div
       className={cn(
-        "relative   w-full bg-white",
+        "relative h-dvh   w-full bg-white",
         !isLoaded && "overflow-y-hidden"
       )}
     >

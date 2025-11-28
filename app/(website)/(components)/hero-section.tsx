@@ -3,6 +3,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 function HeroSection() {
   return (
     <div className="relative w-full  bg-[#EAFECF] overflow-hidden">
@@ -21,7 +23,16 @@ function HeroSection() {
         </div>
 
         {/* Image */}
-        <div className="flex-1 relative flex items-end justify-center overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            ease: "easeOut",
+            delay: 0.3,
+          }}
+          className="flex-1 relative flex items-end justify-center overflow-hidden"
+        >
           <Image
             src={IMAGES.ritik_full.src}
             width={1600}
@@ -29,15 +40,31 @@ function HeroSection() {
             alt="Ritik"
             className="z-10 h-full w-auto object-contain object-bottom"
           />
-        </div>
+        </motion.div>
 
         <MiddleSection />
 
         {/* MiddleSection */}
-        <div className="relative z-10 shrink-0">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 1,
+            ease: "easeOut",
+            delay: 0.5,
+          }}
+          className="relative z-20 shrink-0"
+        >
           <BottomSection />
-        </div>
+        </motion.div>
       </div>
+      <Image
+        src={IMAGES.faded_white.src}
+        width={1600}
+        height={1600}
+        alt="Ritik"
+        className=" z-10 absolute left-0 right-0 bottom-0 w-full h-[200px]"
+      />
     </div>
   );
 }
@@ -57,37 +84,73 @@ const AvailableBadge = () => {
 
 const MiddleSection = () => {
   return (
-    <div className=" hidden md:flex px-4 absolute h-full w-full justify-between items-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.7,
+        ease: "easeOut",
+        delay: 0.5,
+      }}
+      className=" hidden md:flex px-4 absolute h-full w-full justify-between items-center"
+    >
       <AvailableBadge />
 
       <div className=" z-10 hidden sm:block right-4 md:right-10 font-inter font-normal       max-w-[250px] text-gray-900 text-sm  ">
         Creates and implements digital solutions, transforming concepts into
         functional technology
       </div>
-    </div>
+    </motion.div>
   );
 };
 const Headline = () => {
   return (
-    <div className="w-full text-center  ">
-      <h1 className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal">
+    <div className="w-full text-center">
+      {/* Heading 1 */}
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+        className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal"
+      >
         Hi I’m Ritik
-      </h1>
+      </motion.h1>
 
-      <h2 className="text-5xl   md:text-7xl mb-2 lg:text-8xl text-gray-900 tracking-tight font-newsreader italic font-light">
+      {/* Heading 2 */}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.7,
+          ease: "easeOut",
+          delay: 0.3,
+        }}
+        className="text-5xl md:text-7xl mb-2 lg:text-8xl text-gray-900 tracking-tight font-newsreader italic font-extralight"
+      >
         Software developer
-      </h2>
-      <div className="md:hidden flex justify-center">
+      </motion.h2>
+
+      {/* Badge */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 1,
+          ease: "easeOut",
+          delay: 0.3,
+        }}
+        className="md:hidden flex justify-center"
+      >
         <AvailableBadge />
-      </div>
+      </motion.div>
     </div>
   );
 };
 
 const BottomSection = () => {
   return (
-    <div className="flex md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
-      <div className="hidden md:flex flex-col items-start justify-center">
+    <div className="flex gap-6 mb-34 md:mb-10   flex-col-reverse  md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
+      <div className="flex flex-col items-start justify-center">
         {/* Bottom Left - Social Proof */}
         <div className="flex items-center gap-4 ">
           <div className="flex -space-x-3">
@@ -125,7 +188,7 @@ const BottomSection = () => {
         </div>
       </div>
 
-      <Button size="xl" className="group my-20 sm:my-10 rounded-full">
+      <Button size="xl" className="group  md:my-0 rounded-full">
         <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
         <span className="text-base"> Get Touch</span>
       </Button>
