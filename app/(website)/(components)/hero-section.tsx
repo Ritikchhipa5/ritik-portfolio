@@ -5,6 +5,8 @@ import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const hedline =
+  "Building premium, scalable products with me. Creating web, mobile, UI, and beyond—experiences that truly work.";
 function HeroSection() {
   return (
     <div className="relative w-full  bg-[#EAFECF] overflow-hidden">
@@ -63,7 +65,7 @@ function HeroSection() {
         width={1600}
         height={1600}
         alt="Ritik"
-        className=" z-10 absolute left-0 right-0 bottom-0 w-full h-[200px]"
+        className=" z-10 absolute left-0 right-0 bottom-0 w-full h-[280px]"
       />
     </div>
   );
@@ -96,9 +98,8 @@ const MiddleSection = () => {
     >
       <AvailableBadge />
 
-      <div className=" z-10 hidden sm:block right-4 md:right-10 font-inter font-normal       max-w-[250px] text-gray-900 text-sm  ">
-        Creates and implements digital solutions, transforming concepts into
-        functional technology
+      <div className=" z-10 hidden sm:block right-4 md:right-10 font-inter font-normal       max-w-[350px] text-gray-900 text-sm  ">
+        {hedline}
       </div>
     </motion.div>
   );
@@ -149,7 +150,7 @@ const Headline = () => {
 
 const BottomSection = () => {
   return (
-    <div className="flex gap-6 mb-34 md:mb-10   flex-col-reverse  md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
+    <div className="flex gap-6 mb-10 md:mb-10   flex-col-reverse  md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
       <div className="flex flex-col items-start justify-center">
         {/* Bottom Left - Social Proof */}
         <div className="flex items-center gap-4 ">
@@ -192,6 +193,9 @@ const BottomSection = () => {
         <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
         <span className="text-base"> Get Touch</span>
       </Button>
+      <div className="text-sm md:hidden block text-center max-w-xs">
+        {hedline}
+      </div>
     </div>
   );
 };

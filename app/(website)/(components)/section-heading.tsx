@@ -8,7 +8,7 @@ function SectionHeading({
   secondHeading: string;
 }) {
   return (
-    <div>
+    <div className=" capitalize">
       <h4 className="text-3xl relative z-10 font-newsreader italic text-center font-extralight">
         {primaryHeading}
       </h4>

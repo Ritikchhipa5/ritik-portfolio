@@ -1,9 +1,11 @@
 import { SplittingText } from "@/components/animate-ui/primitives/texts/splitting";
 import { Magnetic } from "@/components/ui/shadcn-io/magnetic";
+import { cn } from "@/lib/utils";
+import { Zap } from "lucide-react";
 
 function MyGoal() {
   const TEXT =
-    "Whereas disregard rights have rights resulted Whereas disregard and contempt for disregard and contempt for human rights have resulted.";
+    "Empowering brands and startups by turning ideas into sleek, high-performing products backed by clean code and robust architecture.";
 
   return (
     <div className="relative py-20 md:my-20 my-10 max-w-7xl mx-auto">
@@ -26,13 +28,13 @@ function MyGoal() {
     "
       >
         <div className=" scale-95  xl:scale-100 rotate-3 xl:rotate-10">
-          <Badge />
+          <Badge index={1} label={"Product Design"} />
         </div>
         <div className="scale-95 xl:scale-100 rotate-1 xl:rotate-14 hidden sm:block xl:block">
-          <Badge />
+          <Badge index={2} label="Website" />
         </div>
         <div className="scale-95 xl:scale-100 -rotate-2 xl:-rotate-6  block xl:block">
-          <Badge />
+          <Badge index={3} label="Backend" />
         </div>
       </div>
 
@@ -55,13 +57,13 @@ function MyGoal() {
     "
       >
         <div className="scale-95  xl:scale-100 rotate-2 xl:rotate-[7deg]">
-          <Badge />
+          <Badge index={4} label="SaaS" />
         </div>
         <div className="scale-95  xl:scale-100 -rotate-1 xl:rotate-12 hidden sm:block xl:block">
-          <Badge />
+          <Badge index={5} label="Mobile App" />
         </div>
         <div className="scale-95  xl:scale-100 -rotate-3 xl:-rotate-15 hidden md:block xl:block">
-          <Badge />
+          <Badge index={6} label="UI/UX" />
         </div>
       </div>
 
@@ -95,12 +97,23 @@ function MyGoal() {
 
 export default MyGoal;
 
-const Badge = () => {
+const Badge = ({ label, index }: { label: string; index: number }) => {
+  const colors: Record<number, string> = {
+    1: "bg-lime-400",
+    2: "bg-sky-400",
+    3: "bg-orange-400",
+    4: "bg-yellow-400",
+    5: "bg-red-400",
+    6: "bg-purple-400",
+  };
   return (
     <Magnetic>
       <div className="px-4 py-2 bg-white shadow-md rounded-full flex items-center gap-2">
-        <span className="w-3 h-3 bg-lime-400 rounded-full"></span>
-        <span className="text-sm font-light">new projects</span>
+        <span className={cn("p-1  rounded-full", colors[index])}>
+          <Zap size={14} fill="white" color="white" />
+        </span>
+
+        <span className="text-sm font-light font-dm-sans">{label}</span>
       </div>
     </Magnetic>
   );

@@ -8,6 +8,7 @@ import WhoAmI from "@/app/(website)/(components)/who-am-i";
 import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import Testimonials from "@/app/(website)/(components)/testimonials";
 
 export default function Home() {
   const [transition, setTransition] = useState(false);
@@ -34,8 +35,9 @@ export default function Home() {
       {transition && (
         <>
           <HeroSection />
-          {/* <MyGoal /> */}
+          <MyGoal />
           <Portfolio />
+          <Testimonials />
           <WhoAmI />
           <Footer />
         </>
