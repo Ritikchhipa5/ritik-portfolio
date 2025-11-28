@@ -86,7 +86,7 @@ const Headline = () => {
 
 const BottomSection = () => {
   return (
-    <div className="flex md:flex-row px-4  z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
+    <div className="flex md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
       <div className="hidden md:flex flex-col items-start justify-center">
         {/* Bottom Left - Social Proof */}
         <div className="flex items-center gap-4 ">
@@ -125,7 +125,7 @@ const BottomSection = () => {
         </div>
       </div>
 
-      <Button size="xl" className="group my-10 rounded-full">
+      <Button size="xl" className="group my-20 sm:my-10 rounded-full">
         <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
         <span className="text-base"> Get Touch</span>
       </Button>
