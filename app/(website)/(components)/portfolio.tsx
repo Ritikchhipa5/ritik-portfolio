@@ -16,7 +16,7 @@ const portfolio = [
 ];
 function Portfolio() {
   return (
-    <div className="relative py-16 my-16 max-w-7xl mx-auto ">
+    <div className="relative md:py-20 py-10 md:my-20 my-10 px-4 max-w-7xl mx-auto ">
       <SectionHeading primaryHeading="Portfolio" secondHeading="Best Works" />
       <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-4">
         {portfolio.map((item, index) => (

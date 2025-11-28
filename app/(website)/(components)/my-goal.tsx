@@ -6,51 +6,61 @@ function MyGoal() {
     "Whereas disregard rights have rights resulted Whereas disregard and contempt for disregard and contempt for human rights have resulted.";
 
   return (
-    <div className="relative py-16 my-16 max-w-7xl mx-auto ">
-      {/* Floating left badges */}
+    <div className="relative py-20 md:my-20 my-10 max-w-7xl mx-auto">
+      {/* LEFT BADGES */}
       <div
         className="
-        z-1
-      absolute 
-      left-0 
-      top-1/2 
-      -translate-y-1/2 
-     
-      space-y-10 
-      md:space-y-14
+      absolute inset-x-0 top-2
+      flex justify-center space-x-4
+      sm:space-x-6
+      md:space-x-10
+
+      xl:inset-auto
+      xl:left-4
+      xl:top-1/2
+      xl:-translate-y-1/2
+      xl:flex-col
+      xl:justify-start
+      xl:space-x-0
+      xl:space-y-10
     "
       >
-        <div className="rotate-[10deg]">
+        <div className=" scale-95  xl:scale-100 rotate-3 xl:rotate-10">
           <Badge />
         </div>
-
-        <div className="rotate-[14deg]">
+        <div className="scale-95 xl:scale-100 rotate-1 xl:rotate-14 hidden sm:block xl:block">
           <Badge />
         </div>
-        <div className="rotate-[-6deg]">
+        <div className="scale-95 xl:scale-100 -rotate-2 xl:-rotate-6  block xl:block">
           <Badge />
         </div>
       </div>
 
-      {/* Floating right badges */}
+      {/* RIGHT BADGES */}
       <div
         className="
-          z-1
-      absolute 
-      right-0 
-      top-1/2 
-      -translate-y-1/2 
-      space-y-10 
-      md:space-y-16
+      absolute inset-x-0 bottom-6
+      flex justify-center space-x-4
+      sm:space-x-6
+      md:space-x-10
+
+      xl:inset-auto
+      xl:right-4
+      xl:top-1/2
+      xl:-translate-y-1/2
+      xl:flex-col
+      xl:justify-start
+      xl:space-x-0
+      xl:space-y-10
     "
       >
-        <div className="rotate-[-4deg]">
+        <div className="scale-95  xl:scale-100 rotate-2 xl:rotate-[7deg]">
           <Badge />
         </div>
-        <div className="rotate-[7deg]">
+        <div className="scale-95  xl:scale-100 -rotate-1 xl:rotate-12 hidden sm:block xl:block">
           <Badge />
         </div>
-        <div className="rotate-[-15deg]">
+        <div className="scale-95  xl:scale-100 -rotate-3 xl:-rotate-15 hidden md:block xl:block">
           <Badge />
         </div>
       </div>
@@ -60,16 +70,17 @@ function MyGoal() {
         My Goal!
       </h2>
 
-      <div className="relative font-dm-sans text-center font-light leading-[1.4] text-3xl sm:text-4xl md:text-5xl max-w-5xl mx-auto ">
+      {/* Animated text */}
+      <div className="relative z-10 font-dm-sans text-center font-light leading-[1.4] text-3xl sm:text-4xl md:text-5xl max-w-5xl mx-auto mt-4">
         <SplittingText
           text={TEXT}
           aria-hidden="true"
-          className="block  text-neutral-200 px-10 dark:text-neutral-800"
+          className="block text-neutral-200 px-8 sm:px-10 dark:text-neutral-800"
           disableAnimation
         />
         <SplittingText
           text={TEXT}
-          className="block  absolute inset-0 px-10"
+          className="block absolute inset-0 px-8 sm:px-10"
           type="chars"
           inView
           color=""
@@ -78,11 +89,6 @@ function MyGoal() {
           transition={{ duration: 0.2, ease: "easeOut" }}
         />
       </div>
-      {/* Paragraph */}
-      {/* <p className="text-center px-10 relative z-10 max-w-5xl mx-auto font-dm-sans font-light leading-[1.4] text-3xl sm:text-4xl md:text-5xl mt-6">
-        Whereas disregard rights have rights resulted Whereas disregard and
-        contempt for disregard and contempt for human rights have resulted.
-      </p> */}
     </div>
   );
 }

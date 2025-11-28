@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div
       className={cn(
-        "relative h-dvh  w-full bg-white",
+        "relative   w-full bg-white",
         !isLoaded && "overflow-y-hidden"
       )}
     >
@@ -34,7 +34,7 @@ export default function Home() {
       {transition && (
         <>
           <HeroSection />
-          <MyGoal />
+          {/* <MyGoal /> */}
           <Portfolio />
           <WhoAmI />
           <Footer />
