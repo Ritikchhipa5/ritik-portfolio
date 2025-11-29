@@ -23,9 +23,57 @@ const inter = Inter({
   style: ["italic", "normal"],
 });
 
-export const metadata: Metadata = {
-  title: "Ritik Chhipa Portfolio",
-  description: "Ritik Chhipa Portfolio",
+const BASE_URL = "https://ritik-portfolio-one.vercel.app";
+
+export const metadata = {
+  title: "Ritik Chhipa — Full-Stack & Mobile App Developer",
+  description:
+    "Ritik is a full-stack, mobile, and Web3 developer building premium, scalable digital products. Trusted by more than 50+ clients. Expert in web, mobile, backend, SaaS, UI/UX, and blockchain development.",
+  keywords: [
+    "Ritik Chhipa",
+    "software developer",
+    "full stack developer",
+    "mobile app developer",
+    "web developer",
+    "Web3 developer",
+    "blockchain developer",
+    "UI/UX designer",
+    "SaaS developer",
+    "Next.js portfolio",
+    "React Native developer",
+    "backend developer",
+  ],
+  authors: [{ name: "Ritik Chhipa" }],
+  creator: "Ritik Chhipa",
+  publisher: "Ritik Chhipa",
+  openGraph: {
+    title: "Ritik Chhipa — Full-Stack, Web3 & Mobile App Developer",
+    description:
+      "Building premium, scalable products — web, mobile, UI/UX, SaaS, and blockchain. Trusted by 50+ clients worldwide.",
+    url: BASE_URL,
+    siteName: "Ritik Chhipa Portfolio",
+    images: [
+      {
+        url: `${BASE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Ritik Chhipa Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ritik Chhipa — Full-Stack Developer",
+    description:
+      "Full-stack, mobile, and Web3 developer creating high-performance digital products.",
+    images: [`${BASE_URL}/og-image.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
