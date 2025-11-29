@@ -11,7 +11,7 @@ import { BlogSection } from "@/app/(website)/(components)/blog-section";
 export default function ContactPage() {
   return (
     <>
-      <div className="relative w-full min-h-screen py-20 bg-[#EAFECF] overflow-hidden">
+      <div className="relative w-full     py-20 bg-[#EAFECF] overflow-hidden">
         <div
           className="absolute  inset-0 bg-cover bg-center opacity-90"
           style={{
@@ -28,7 +28,7 @@ export default function ContactPage() {
         {/* BG gradient */}
         <div className="absolute inset-0 opacity-80 bg-[url('/ellipse.png')] bg-cover bg-center" />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto w-full px-4 text-center">
           {/* Headline */}
           <motion.h4
             initial={{ opacity: 0, y: 15 }}

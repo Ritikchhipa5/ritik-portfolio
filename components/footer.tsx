@@ -18,7 +18,7 @@ function Footer() {
       />
       {/* Navigation */}
       <div className="z-10 relative overflow-hidden">
-        <div className="max-w-7xl px-6 mx-auto  ">
+        <div className="max-w-7xl px-4 mx-auto  ">
           <div className="w-full text-center space-y-4 ">
             <h1 className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal">
               Let’s make it happen
