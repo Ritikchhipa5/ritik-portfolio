@@ -13,10 +13,17 @@ export default function ContactPage() {
     <>
       <div className="relative w-full min-h-screen py-20 bg-[#EAFECF] overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-90"
+          className="absolute  inset-0 bg-cover bg-center opacity-90"
           style={{
             backgroundImage: `url(${IMAGES.ellipse.src})`,
           }}
+        />
+        <Image
+          src={IMAGES.faded_white.src}
+          width={1600}
+          height={1600}
+          alt="Ritik"
+          className=" z-10 absolute left-0 right-0 bottom-0 w-full h-[280px]"
         />
         {/* BG gradient */}
         <div className="absolute inset-0 opacity-80 bg-[url('/ellipse.png')] bg-cover bg-center" />

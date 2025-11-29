@@ -1,5 +1,5 @@
 "use client";
-import ClickSpark from "@/components/ClickSpark";
+
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { cn } from "@/lib/utils";

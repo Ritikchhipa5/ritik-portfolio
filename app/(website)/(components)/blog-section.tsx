@@ -16,8 +16,8 @@ export function BlogSection() {
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8 mt-16">
-          {BLOG_POSTS.map((post, i) => (
-            <BlogCard key={i} post={post} />
+          {BLOG_POSTS.map((_, i) => (
+            <BlogCard key={i} />
           ))}
         </div>
       </div>
@@ -25,7 +25,7 @@ export function BlogSection() {
   );
 }
 
-const BlogCard = ({ post }) => {
+const BlogCard = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
