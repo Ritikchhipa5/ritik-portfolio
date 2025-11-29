@@ -8,14 +8,14 @@ import SectionHeading from "@/app/(website)/(components)/section-heading";
 export function BlogSection() {
   return (
     <div className="relative py-10 md:py-20 w-full bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           primaryHeading="My Blog"
           secondHeading="Thoughts & Tutorials"
         />
 
         {/* Blog Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8 mt-16">
           {BLOG_POSTS.map((post, i) => (
             <BlogCard key={i} post={post} />
           ))}

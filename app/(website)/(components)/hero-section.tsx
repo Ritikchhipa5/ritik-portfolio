@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const hedline =
   "Building premium, scalable products with me. Creating web, mobile, UI, and beyond—experiences that truly work.";
@@ -77,7 +78,10 @@ export default HeroSection;
 const AvailableBadge = () => {
   return (
     <div className="flex z-10 items-center gap-3 bg-white rounded-full px-4 py-2 ">
-      <div className="w-3 h-3 bg-lime-400 rounded-full animate-pulse"></div>
+      <div className="relative">
+        <div className="w-3 h-3 absolute bg-lime-400 rounded-full animate-ping"></div>
+        <div className="w-3 h-3 bg-lime-400 rounded-full"></div>
+      </div>
       <span className="text-gray-700 font-dm-sans text-sm">
         Available for new projects
       </span>
@@ -150,6 +154,7 @@ const Headline = () => {
 };
 
 const BottomSection = () => {
+  const { push } = useRouter();
   return (
     <div className="flex gap-6 mb-10 md:mb-10   flex-col-reverse  md:flex-row px-4   z-20  absolute bottom-0 w-full max-w-7xl  items-center justify-center md:justify-between flex-1">
       <div className="flex flex-col items-start justify-center">
@@ -190,7 +195,11 @@ const BottomSection = () => {
         </div>
       </div>
 
-      <Button size="xl" className="group  md:my-0 rounded-full">
+      <Button
+        onClick={() => push("/contact")}
+        size="xl"
+        className="group  md:my-0 rounded-full"
+      >
         <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
         <span className="text-base"> Get Touch</span>
       </Button>

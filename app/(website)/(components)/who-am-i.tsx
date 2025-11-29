@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function WhoAmI() {
   return (
-    <div className="relative py-10 md:py-20 px-4 max-w-7xl mx-auto ">
+    <div id="about" className="relative py-10 md:py-20 px-4 max-w-7xl mx-auto ">
       <SectionHeading
         primaryHeading="Who am I?"
         secondHeading="Let me introduce myself"
