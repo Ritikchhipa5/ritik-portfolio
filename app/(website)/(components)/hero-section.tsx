@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 
 const hedline =
   "Building premium, scalable products with me. Creating web, mobile, UI, and beyond—experiences that truly work.";
+
 function HeroSection() {
   return (
     <div className="relative w-full  bg-[#EAFECF] overflow-hidden">
@@ -77,7 +78,7 @@ const AvailableBadge = () => {
   return (
     <div className="flex z-10 items-center gap-3 bg-white rounded-full px-4 py-2 ">
       <div className="w-3 h-3 bg-lime-400 rounded-full animate-pulse"></div>
-      <span className="text-gray-700 font-inter text-sm font-medium">
+      <span className="text-gray-700 font-dm-sans text-sm">
         Available for new projects
       </span>
     </div>
@@ -98,7 +99,7 @@ const MiddleSection = () => {
     >
       <AvailableBadge />
 
-      <div className=" z-10 hidden sm:block right-4 md:right-10 font-inter font-normal       max-w-[350px] text-gray-900 text-sm  ">
+      <div className=" z-10 hidden sm:block right-4 md:right-10  font-normal       max-w-[350px] text-gray-700 font-dm-sans   ">
         {hedline}
       </div>
     </motion.div>
@@ -179,7 +180,7 @@ const BottomSection = () => {
               </Avatar>
             </div>
           </div>
-          <div className="text-sm  font-inter  text-gray-700">
+          <div className="text-sm  font-dm-sans  text-gray-700">
             <p className="">Trusted by over</p>
             <p className="">
               <span className="text-gray-900 font-semibold">50+</span> happy
@@ -193,7 +194,7 @@ const BottomSection = () => {
         <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
         <span className="text-base"> Get Touch</span>
       </Button>
-      <div className="text-sm md:hidden block text-center max-w-xs">
+      <div className="text-sm md:hidden block text-gray-700 font-dm-sans text-center max-w-xs">
         {hedline}
       </div>
     </div>

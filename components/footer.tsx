@@ -1,6 +1,7 @@
 import { IMAGES } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import { LucideArrowRight } from "lucide-react";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -19,7 +20,7 @@ function Footer() {
               Let’s make it happen
             </h1>
 
-            <p className=" text-lg font-inter mx-auto max-w-xl w-full  text-gray-900 tracking-tight italic font-light">
+            <p className="  font-inter mx-auto max-w-lg w-full  text-gray-900 tracking-tight italic font-light">
               always open to new opportunities, collaborations, and creative
               challenges. Let's work together to bring your ideas to life
             </p>
@@ -31,18 +32,18 @@ function Footer() {
           </div>
           <div className="flex mb-16 gap-10 md:flex-row flex-col items-center justify-between">
             <nav className="flex gap-10    text-sm font-dm-sans text-gray-700 ">
-              <a href="#" className="hover:text-black">
+              <Link href="#" className="hover:text-black">
                 Home
-              </a>
-              <a href="#" className="hover:text-black">
+              </Link>
+              <Link href="#" className="hover:text-black">
                 About
-              </a>
-              <a href="#" className="hover:text-black">
+              </Link>
+              <Link href="#" className="hover:text-black">
                 Portfolio
-              </a>
-              <a href="#" className="hover:text-black">
+              </Link>
+              <Link href="/contact" className="hover:text-black">
                 Contact
-              </a>
+              </Link>
             </nav>
             <p className="text-xs font-dm-sans text-black/50">
               {new Date().getFullYear()} Ritik Chhipa. All rights reserved.

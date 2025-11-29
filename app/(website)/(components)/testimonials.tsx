@@ -55,7 +55,7 @@ export default function Testimonials() {
   const loopList = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative md:py-20 py-10 md:my-20 my-10 px-4 max-w-7xl mx-auto ">
+    <section className="relative  py-10 md:py-20 px-4 max-w-7xl mx-auto ">
       <SectionHeading
         primaryHeading=" testimonials "
         secondHeading="Meet our happy clients"

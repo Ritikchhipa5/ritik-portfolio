@@ -8,7 +8,7 @@ function MyGoal() {
     "Empowering brands and startups by turning ideas into sleek, high-performing products backed by clean code and robust architecture.";
 
   return (
-    <div className="relative py-20 md:my-20 my-10 max-w-7xl mx-auto">
+    <div className="relative py-10 md:py-20 my-10 max-w-7xl mx-auto">
       {/* LEFT BADGES */}
       <div
         className="
