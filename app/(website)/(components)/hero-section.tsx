@@ -162,25 +162,16 @@ const BottomSection = () => {
         <div className="flex items-center gap-4 ">
           <div className="flex -space-x-3">
             <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
+              <Avatar className="border-2 border-gray-200">
+                <AvatarImage src={IMAGES.avatars[1].src} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/maxleiter.png"
-                  alt="@maxleiter"
-                />
+              <Avatar className="border-2 border-gray-200">
+                <AvatarImage src={IMAGES.avatars[2].src} alt="@maxleiter" />
                 <AvatarFallback>LR</AvatarFallback>
               </Avatar>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/evilrabbit.png"
-                  alt="@evilrabbit"
-                />
+              <Avatar className="border-2 border-gray-200">
+                <AvatarImage src={IMAGES.avatars[3].src} alt="@evilrabbit" />
                 <AvatarFallback>ER</AvatarFallback>
               </Avatar>
             </div>

@@ -8,6 +8,7 @@ import { useState } from "react";
 import { IMAGES } from "@/assets/images";
 import { routes } from "@/lib/constant";
 import { useRouter } from "next/navigation";
+import { MenuVertical } from "@/components/ui/menu-vertical";
 
 const LOGO_WRAPPER_VARIANTS = {
   center: {
@@ -128,7 +129,14 @@ export default function Header({ transition }: { transition: boolean }) {
               />
 
               <div className="flex flex-col z-10 max-w-7xl items-start w-full gap-4 mx-auto">
-                {routes.map((item, i) => (
+                <MenuVertical
+                  handleClick={(link) => {
+                    setMenuOpen(false);
+                    push(link);
+                  }}
+                  menuItems={routes}
+                />
+                {/* {routes.map((item, i) => (
                   <motion.div
                     key={i}
                     // href={`#${item.label.toLowerCase()}`}
@@ -148,7 +156,7 @@ export default function Header({ transition }: { transition: boolean }) {
                   >
                     {item.label}
                   </motion.div>
-                ))}
+                ))} */}
               </div>
             </motion.div>
           )}

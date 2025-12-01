@@ -14,8 +14,8 @@ export default function Home() {
       <MyGoal />
       <Portfolio />
       <Testimonials />
-      <BlogSection />
       <WhoAmI />
+      <BlogSection />
     </>
   );
 }

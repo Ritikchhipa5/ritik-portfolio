@@ -7,17 +7,22 @@ import Link from "next/link";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
 import { BlogSection } from "@/app/(website)/(components)/blog-section";
+import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 
-export default function ContactPage() {
+const portfolio = [
+  {
+    image: IMAGES.portfolio[1].src,
+    title: "Kali – Step-Tracking Rewards Mobile App",
+  },
+  { image: IMAGES.portfolio[2].src, title: "Sortcoder Web app" },
+  { image: IMAGES.portfolio[3].src, title: "Mailforest Brandkit " },
+  { image: IMAGES.portfolio[4].src, title: "MIMIR:Visualize Your Crypto" },
+];
+
+export default function PortfolioPage() {
   return (
     <>
-      <div className="relative w-full     py-20 bg-[#EAFECF] overflow-hidden">
-        <div
-          className="absolute  inset-0 bg-cover bg-center opacity-90"
-          style={{
-            backgroundImage: `url(${IMAGES.ellipse.src})`,
-          }}
-        />
+      <div className="relative w-full     py-20  overflow-hidden">
         <Image
           src={IMAGES.faded_white.src}
           width={1600}
@@ -28,7 +33,7 @@ export default function ContactPage() {
         {/* BG gradient */}
         <div className="absolute inset-0 opacity-80 bg-[url('/ellipse.png')] bg-cover bg-center" />
 
-        <div className="relative z-10 max-w-4xl mx-auto w-full px-4 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 text-center">
           {/* Headline */}
           <motion.h4
             initial={{ opacity: 0, y: 15 }}
@@ -36,7 +41,7 @@ export default function ContactPage() {
             transition={{ duration: 0.4 }}
             className="text-3xl font-newsreader italic font-extralight"
           >
-            Let’s Connect
+            Portfolio
           </motion.h4>
 
           <motion.h1
@@ -45,7 +50,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="text-5xl mt-4 font-newsreader italic font-light"
           >
-            Tell me about your project
+            Best Works
           </motion.h1>
 
           <motion.p
@@ -54,47 +59,21 @@ export default function ContactPage() {
             transition={{ delay: 0.7 }}
             className="mt-6 text-gray-700 font-dm-sans max-w-xl mx-auto"
           >
-            I build premium, scalable websites, apps, and digital experiences.
-            Let’s collaborate and bring your idea to life
+            Here are some of my best projects, Take <br /> a look at what I’ve
+            built
           </motion.p>
 
           {/* Social Cards */}
-          <div className="grid md:grid-cols-2 gap-6 mt-16">
-            {[
-              {
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg",
-                title: "Email Me",
-                link: "mailto:ritikchhipa5@gmail.com",
-              },
-              {
-                link: "https://www.linkedin.com/in/ritikchhipa5/",
-                title: "LinkedIn",
-                image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0bGEl9v47XieEtHyj0TqTr1tOXJmib-KHtw&s",
-              },
-              {
-                link: "https://www.upwork.com/freelancers/~01567a14a1df3e84cd",
-                title: "Upwork",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Cib-upwork_%28CoreUI_Icons_v1.0.0%29.svg/640px-Cib-upwork_%28CoreUI_Icons_v1.0.0%29.svg.png",
-              },
-              {
-                link: "https://www.fiverr.com/rit9001586400",
-                title: "Fiverr",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fiverr_Logo_fiverr.png/1200px-Fiverr_Logo_fiverr.png?20240621044633",
-              },
-            ].map((contact, index) => (
-              <ContactCard
+          <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-4">
+            {portfolio.map((item, index) => (
+              <PortfolioCard
+                title={item.title}
+                image={item.image}
+                index={index}
                 key={index}
-                title={contact.title}
-                image={contact?.image}
-                link={contact.link}
               />
             ))}
           </div>
-
           {/* Calendly Button */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -102,9 +81,15 @@ export default function ContactPage() {
             transition={{ delay: 0.5 }}
             className="mt-14"
           >
-            <Button size="xl" className="group  md:my-0 rounded-full">
-              <Calendar className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-              <span className="text-base"> Book a Call</span>
+            <Button
+              onClick={() => {
+                "/contact";
+              }}
+              size="xl"
+              className="group  md:my-0 rounded-full"
+            >
+              <ArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
+              <span className="text-base"> Get Touch</span>
             </Button>
           </motion.div>
         </div>
