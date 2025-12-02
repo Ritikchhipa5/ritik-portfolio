@@ -6,20 +6,22 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
-import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
-import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 
-const portfolio = [
-  {
-    image: IMAGES.portfolio[1].src,
-    title: "Kali – Step-Tracking Rewards Mobile App",
-  },
-  { image: IMAGES.portfolio[2].src, title: "Sortcoder Web app" },
-  { image: IMAGES.portfolio[3].src, title: "Mailforest Brandkit " },
-  { image: IMAGES.portfolio[4].src, title: "MIMIR:Visualize Your Crypto" },
-];
+import BlogList from "@/app/(website)/(components)/blog/blog-list";
+import { useEffect, useState } from "react";
+import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
+import { getPortfolios, getTopPortfolios } from "@/api/portfolio";
 
 export default function PortfolioPage() {
+  const [portfolios, setPortfolios] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await getPortfolios();
+      setPortfolios(data);
+    })();
+  }, []);
+
   return (
     <>
       <div className="relative w-full     py-20  overflow-hidden">
@@ -64,16 +66,19 @@ export default function PortfolioPage() {
           </motion.p>
 
           {/* Social Cards */}
-          <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-4">
-            {portfolio.map((item, index) => (
+          <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-6">
+            {portfolios.map((item: any, index) => (
               <PortfolioCard
                 title={item.title}
-                image={item.image}
+                description={item.description}
+                images={item.images}
+                tags={item.tags}
                 index={index}
                 key={index}
               />
             ))}
           </div>
+          <BlogList />
           {/* Calendly Button */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -94,7 +99,7 @@ export default function PortfolioPage() {
           </motion.div>
         </div>
       </div>
-      <BlogSection />
+      {/* <BlogSection /> */}
     </>
   );
 }

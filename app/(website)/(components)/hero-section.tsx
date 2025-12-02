@@ -1,3 +1,5 @@
+"use client";
+
 import { IMAGES } from "@/assets/images";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";

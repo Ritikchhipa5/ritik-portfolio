@@ -1,7 +1,9 @@
-import React from "react";
+"use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { IMAGES } from "@/assets/images";
+
 const BlogCard = () => {
   return (
     <motion.div

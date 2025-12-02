@@ -1,3 +1,5 @@
+"use client";
+
 import { SplittingText } from "@/components/animate-ui/primitives/texts/splitting";
 import { Magnetic } from "@/components/ui/shadcn-io/magnetic";
 import { cn } from "@/lib/utils";

@@ -1,3 +1,4 @@
+"use client";
 import DockSocial from "@/app/(website)/(components)/dock-social";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import { IMAGES } from "@/assets/images";
@@ -109,10 +110,10 @@ const ExperienceRow = ({
 }) => {
   return (
     <div className="grid md:grid-cols-3 grid-cols-2 font-dm-sans items-center capitalize border-b pb-2">
-      <p className="text-sm md:text-base opacity-70 capitalize">
+      <div className="text-sm md:text-base opacity-70 capitalize">
         <span>{company}</span>
-        <div className="opacity-40 md:hidden text-xs">{role}</div>
-      </p>
+        <p className="opacity-40 md:hidden text-xs">{role}</p>
+      </div>
       <p className="text-sm  hidden md:block md:text-base opacity-40 text-right">
         {role}
       </p>

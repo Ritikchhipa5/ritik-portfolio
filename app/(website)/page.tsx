@@ -1,5 +1,3 @@
-"use client";
-
 import HeroSection from "@/app/(website)/(components)/hero-section";
 import MyGoal from "@/app/(website)/(components)/my-goal";
 import Portfolio from "@/app/(website)/(components)/portfolio";
