@@ -79,6 +79,8 @@ export function PortfolioModal({
               overflow-hidden 
               shadow-xl 
               mx-4
+
+              my-20
             "
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -100,7 +102,7 @@ export function PortfolioModal({
 
             <div className="flex flex-col">
               {/* LEFT: Carousel */}
-              <div className="relative aspect-4/3  md:aspect-auto overflow-hidden  md:h-[480px] bg-zinc-100">
+              <div className="relative aspect-4/3  md:aspect-auto overflow-hidden  md:h-[420px] bg-zinc-100">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentIndex}

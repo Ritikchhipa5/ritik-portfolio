@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { CalendarIcon, Instagram, SendIcon } from "lucide-react";
+import { CalendarIcon, FileCodeIcon, Instagram, SendIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
@@ -16,6 +16,7 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 const Icons = {
   calendar: (props: IconProps) => <CalendarIcon {...props} />,
+  resume: (props: IconProps) => <FileCodeIcon {...props} />,
   telegram: (props: IconProps) => <SendIcon {...props} />,
   instagram: (props: IconProps) => <Instagram {...props} />,
   fiverr: (props: IconProps) => (
@@ -74,6 +75,11 @@ const Icons = {
 const DATA = {
   contact: {
     social: {
+      Resume: {
+        name: "Ritik Resume",
+        url: "https://drive.google.com/file/d/1WJ8jcYVR4VFfCsNES50esrdgNJWCPcE-/view?usp=sharing",
+        icon: Icons.resume,
+      },
       GitHub: {
         name: "GitHub",
         url: "https://github.com/Ritikchhipa5",

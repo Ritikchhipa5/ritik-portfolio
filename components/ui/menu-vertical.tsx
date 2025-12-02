@@ -3,8 +3,6 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 
-import Link from "next/link";
-
 type MenuItem = {
   label: string;
   link: string;
@@ -16,8 +14,6 @@ interface MenuVerticalProps {
   color?: string;
   skew?: number;
 }
-
-const MotionLink = motion.create(Link);
 
 export const MenuVertical = ({
   handleClick,

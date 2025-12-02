@@ -19,4 +19,8 @@ export const routes = [
     link: "/contact",
     label: "Contact",
   },
+  {
+    link: "/resume",
+    label: "Resume",
+  },
 ];
