@@ -22,7 +22,7 @@ const inter = Inter({
   style: ["italic", "normal"],
 });
 
-const BASE_URL = "https://ritik-portfolio-one.vercel.app";
+const BASE_URL = "https://www.ritikchhipa.xyz";
 
 export const metadata = {
   title: "Ritik Chhipa — Full-Stack & Mobile App Developer",
