@@ -34,7 +34,9 @@ export function PortfolioModal({
 
   // Reset to first image whenever you open a new portfolio
   useEffect(() => {
-    if (open) setCurrentIndex(0);
+    if (open) {
+      setCurrentIndex(0);
+    }
   }, [open]);
 
   if (!images || images.length === 0) return null;
