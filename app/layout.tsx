@@ -1,5 +1,6 @@
 import { DM_Sans, Inter, Newsreader } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -82,9 +83,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-4548722974359094" />
+      </head>
       <body
         className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
       >
+        <Script
+          id="adsense-script"
+          strategy="afterInteractive"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4548722974359094"
+          crossOrigin="anonymous"
+        />
         {children}
       </body>
     </html>
