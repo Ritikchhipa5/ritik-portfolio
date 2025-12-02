@@ -1,3 +1,4 @@
+import DockSocial from "@/app/(website)/(components)/dock-social";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
@@ -89,6 +90,8 @@ function WhoAmI() {
               <ExperienceRow {...exp} key={index} />
             ))}
           </div>
+
+          <DockSocial />
         </div>
       </div>
     </div>

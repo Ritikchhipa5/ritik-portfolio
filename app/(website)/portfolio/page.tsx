@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
-import { BlogSection } from "@/app/(website)/(components)/blog-section";
+import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 
 const portfolio = [

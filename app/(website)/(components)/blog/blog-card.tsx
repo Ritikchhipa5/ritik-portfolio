@@ -1,30 +1,7 @@
-"use client";
-
+import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { IMAGES } from "@/assets/images";
-import SectionHeading from "@/app/(website)/(components)/section-heading";
-
-export function BlogSection() {
-  return (
-    <div className="relative py-10 md:py-20 w-full bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <SectionHeading
-          primaryHeading="My Blog"
-          secondHeading="Thoughts & Tutorials"
-        />
-
-        {/* Blog Grid */}
-        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8 mt-16">
-          {BLOG_POSTS.map((_, i) => (
-            <BlogCard key={i} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const BlogCard = () => {
   return (
     <motion.div
@@ -84,27 +61,4 @@ const BlogCard = () => {
   );
 };
 
-const BLOG_POSTS = [
-  {
-    title: "How I Build Fast, Scalable Apps",
-    description: "My workflow for creating modern web & mobile applications.",
-    link: "/blog/post-1",
-    image:
-      "https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/258010_Black_friday_cyber_monday_CVirginia_BF5.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400",
-  },
-  {
-    title: "Designing Clean UI with Shadcn",
-    description:
-      "Tips to build beautiful, modern UI using shadcn UI + Tailwind.",
-    link: "/blog/post-2",
-    image:
-      "https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/258010_Black_friday_cyber_monday_CVirginia_BF5.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400",
-  },
-  {
-    title: "Making MVPs That Actually Work",
-    description: "How to build MVPs quickly without sacrificing quality.",
-    link: "/blog/post-3",
-    image:
-      "https://platform.theverge.com/wp-content/uploads/sites/2/2025/11/258010_Black_friday_cyber_monday_CVirginia_BF5.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400",
-  },
-];
+export default BlogCard;
