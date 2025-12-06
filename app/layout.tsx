@@ -85,6 +85,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-4548722974359094" />
+        <meta
+          name="p:domain_verify"
+          content="9f7382bead040ea073ec7ec56997bc6e"
+        />
       </head>
       <body
         className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
