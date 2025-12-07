@@ -14,9 +14,22 @@ import avtar_4 from "./avatars/avatar-4.png";
 import avtar_5 from "./avatars/avatar-5.png";
 import avtar_6 from "./avatars/avatar-6.png";
 
+import github from "./icons/github.png";
+import redis from "./icons/redis-color.png";
+import chatgpt from "./icons/chat-gpt.svg";
+import next from "./icons/next.png";
+import react from "./icons/react.svg";
+import vscode from "./icons/vs-code.png";
+import typescript from "./icons/type.png";
+
+import screen from "./screen.png";
+import deliver_screen from "./deliver-screen.png";
+
 export const IMAGES = {
   ellipse,
+  screen,
   ritik_full,
+  deliver_screen,
   faded_white,
   funny_ritik,
   ellipse_footer,
@@ -33,5 +46,15 @@ export const IMAGES = {
     4: avtar_4,
     5: avtar_5,
     6: avtar_6,
+  },
+
+  icons: {
+    github,
+    redis,
+    chatgpt,
+    react,
+    next,
+    vscode,
+    typescript,
   },
 };

@@ -33,7 +33,7 @@ export const PortfolioCard = ({
           })
         }
         className="
-        relative shadow-none aspect-580/450 gap-2 overflow-hidden border rounded-3xl 
+        relative shadow-none  aspect-540/450 lg:aspect-580/450 gap-2 overflow-hidden border rounded-3xl 
         bg-white 
         transition-all duration-300 
         hover:-translate-y-1

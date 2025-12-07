@@ -5,6 +5,7 @@ import WhoAmI from "@/app/(website)/(components)/who-am-i";
 import Testimonials from "@/app/(website)/(components)/testimonials";
 import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
 import TechnologySection from "@/app/(website)/(components)/technology-section";
+import { ProcessSection } from "@/app/(website)/(components)/process-section";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <MyGoal />
       <TechnologySection />
       <Portfolio />
+      <ProcessSection />
       <Testimonials />
       <WhoAmI />
       <BlogSection />

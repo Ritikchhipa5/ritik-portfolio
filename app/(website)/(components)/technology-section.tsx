@@ -1,9 +1,8 @@
 import SectionHeading from "@/app/(website)/(components)/section-heading";
-import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/ui/marquee";
-import Image from "next/image";
+import { TechnologyBadge } from "@/app/(website)/(components)/technology-badge";
 
-const technologies = [
+export const technologies = [
   // --- FRONTEND ---
   {
     name: "Next.js",
@@ -181,15 +180,15 @@ const technologies = [
   },
 ];
 
-const firstRow = technologies.slice(0, technologies.length / 2);
-const secondRow = technologies.slice(technologies.length / 2);
+const chunkSize = Math.ceil(technologies.length / 3);
+
+export const firstRow = technologies.slice(0, chunkSize);
+export const secondRow = technologies.slice(chunkSize, chunkSize * 2);
+export const thirdRow = technologies.slice(chunkSize * 2, chunkSize * 3);
 
 function TechnologySection() {
   return (
-    <div
-      id="portfolio"
-      className="relative py-10 md:py-20 px-4 max-w-7xl mx-auto "
-    >
+    <div className="relative py-10 md:py-20 px-4 max-w-7xl mx-auto ">
       <SectionHeading
         primaryHeading="Tech Stack"
         secondHeading="Building with the best"
@@ -198,12 +197,17 @@ function TechnologySection() {
       <div className="relative flex w-full flex-col  mt-12 items-center justify-center overflow-hidden">
         <Marquee pauseOnHover className="[--duration:60s] ">
           {firstRow.map((review) => (
-            <TechnologyCard key={review.name} {...review} />
+            <TechnologyBadge key={review.name} {...review} />
           ))}
         </Marquee>
         <Marquee reverse pauseOnHover className="[--duration:60s]">
           {secondRow.map((review) => (
-            <TechnologyCard key={review.name} {...review} />
+            <TechnologyBadge key={review.name} {...review} />
+          ))}
+        </Marquee>
+        <Marquee pauseOnHover className="[--duration:80s] ">
+          {thirdRow.map((review) => (
+            <TechnologyBadge key={review.name} {...review} />
           ))}
         </Marquee>
         <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
@@ -212,31 +216,5 @@ function TechnologySection() {
     </div>
   );
 }
-
-const TechnologyCard = ({ img, name }: { img: string; name: string }) => {
-  return (
-    <div
-      className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-full border p-2"
-      )}
-    >
-      <div className="flex flex-row items-center gap-2 p-1 ">
-        <Image
-          className="w-6 h-6 object-contain"
-          width="32"
-          height="32"
-          alt=""
-          src={img}
-        />
-        <div className="flex flex-col">
-          <p className="text-xs text-muted-foreground tracking-wider  font-dm-sans">
-            {" "}
-            {name}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 export default TechnologySection;
