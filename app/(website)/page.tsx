@@ -14,6 +14,7 @@ export default function Home() {
       <MyGoal />
       <TechnologySection />
       <Portfolio />
+
       <ProcessSection />
       <Testimonials />
       <WhoAmI />

@@ -5,7 +5,7 @@ import BlogList from "@/app/(website)/(components)/blog/blog-list";
 import { getTopPosts } from "@/api/articles";
 import { useEffect, useMemo, useState } from "react";
 
-export function BlogSection() {
+function BlogPage() {
   const [posts, setPosts] = useState<any>([]);
 
   useEffect(() => {
@@ -46,3 +46,5 @@ export function BlogSection() {
     </div>
   );
 }
+
+export default BlogPage;

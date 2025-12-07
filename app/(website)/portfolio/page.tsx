@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
 
 import BlogList from "@/app/(website)/(components)/blog/blog-list";
 import { useEffect, useState } from "react";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
-import { getPortfolios, getTopPortfolios } from "@/api/portfolio";
+import { getPortfolios } from "@/api/portfolio";
 
 export default function PortfolioPage() {
   const [portfolios, setPortfolios] = useState([]);

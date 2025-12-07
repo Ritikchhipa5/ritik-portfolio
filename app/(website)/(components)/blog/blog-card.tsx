@@ -3,10 +3,16 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { IMAGES } from "@/assets/images";
+import { useRouter } from "next/navigation";
+import { urlFor } from "@/sanity/lib/image";
 
-const BlogCard = () => {
+const BlogCard = ({ mainImage, title, publishedDate, slug, author }: any) => {
+  const { push } = useRouter();
   return (
     <motion.div
+      onClick={() => {
+        push(`/blogs/${slug}`);
+      }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -17,16 +23,14 @@ const BlogCard = () => {
           <Image
             width={1000}
             height={1000}
-            src="https://images.unsplash.com/photo-1536735561749-fc87494598cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxNzd8fHx8fHwyfHwxNzIzNjM0NDc0fA&ixlib=rb-4.0.3&q=80&w=1080"
+            src={mainImage}
             alt="placeholder"
             className="aspect-video w-full rounded-lg object-cover"
           />
         </div>
 
         <div className="px-3 pb-4 pt-2">
-          <h2 className="mb-2  font-dm-sans">
-            How to build a successful brand and business online in 2024
-          </h2>
+          <h2 className="mb-2  font-dm-sans">{title}</h2>
 
           <p className="text-muted-foreground font-dm-sans font-light line-clamp-2 text-sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -45,11 +49,11 @@ const BlogCard = () => {
                   height={1000}
                   className="aspect-square size-full"
                   alt="avatar"
-                  src={IMAGES.avatars[1].src}
+                  src={urlFor(author?.image).url() || IMAGES.avatars[1].src}
                 />
               </span>
-              <span className="text-sm font-medium font-dm-sans">
-                Ritik Chhipa
+              <span className="text-sm font-normal font-dm-sans">
+                {author?.name}
               </span>
             </div>
 

@@ -11,10 +11,10 @@ export const TechnologyBadge = ({
   return (
     <div
       className={cn(
-        "relative h-full w-64 hover:bg-lime-400/10 cursor-pointer overflow-hidden rounded-full border p-2"
+        "relative h-full  hover:bg-lime-400/10 cursor-pointer overflow-hidden rounded-full border p-2"
       )}
     >
-      <div className="flex flex-row items-center gap-2 p-1 ">
+      <div className="flex  flex-row items-center gap-2 p-1 px-2 ">
         <Image
           className="w-6 h-6 object-contain"
           width="32"
