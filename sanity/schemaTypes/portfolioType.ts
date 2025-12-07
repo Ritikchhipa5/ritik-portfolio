@@ -6,6 +6,7 @@ export const portfolioType = defineType({
   title: "Portfolio",
   type: "document",
   icon: DocumentTextIcon,
+
   fields: [
     defineField({
       name: "title",
