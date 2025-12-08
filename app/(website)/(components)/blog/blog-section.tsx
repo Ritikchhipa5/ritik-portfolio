@@ -25,6 +25,7 @@ export function BlogSection() {
       title: article?.title || "",
       slug: article?.slug?.current || "",
       publishedDate: article?.publishedAt || "",
+      description: article?.description || "",
       mainImage: article?.mainImage?.asset?.url || "",
       author: {
         name: article?.author?.name || "",
@@ -32,6 +33,8 @@ export function BlogSection() {
       },
     }));
   }, [posts]);
+
+  console.log(postsData, "postsData");
 
   return (
     <div className="relative py-10 md:py-20 w-full bg-white">

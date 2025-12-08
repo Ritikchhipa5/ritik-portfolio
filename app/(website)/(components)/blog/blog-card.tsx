@@ -6,7 +6,14 @@ import { IMAGES } from "@/assets/images";
 import { useRouter } from "next/navigation";
 import { urlFor } from "@/sanity/lib/image";
 
-const BlogCard = ({ mainImage, title, publishedDate, slug, author }: any) => {
+const BlogCard = ({
+  mainImage,
+  title,
+  publishedDate,
+  description,
+  slug,
+  author,
+}: any) => {
   const { push } = useRouter();
   return (
     <motion.div
@@ -33,8 +40,7 @@ const BlogCard = ({ mainImage, title, publishedDate, slug, author }: any) => {
           <h2 className="mb-2  font-dm-sans">{title}</h2>
 
           <p className="text-muted-foreground font-dm-sans font-light line-clamp-2 text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            {description}
           </p>
 
           {/* Divider */}
