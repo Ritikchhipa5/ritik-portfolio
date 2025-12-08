@@ -1,7 +1,6 @@
-import ellipse from "./ellipse.png";
+import ellipse from "./ellipse.svg";
 import ritik_full from "./ritik-full.png";
 import faded_white from "./faded-white.png";
-import funny_ritik from "./funny-ritik.png";
 import ellipse_footer from "./ellipse-footer.png";
 import portfolio_1 from "./portfolio/portfolio-1.png";
 import portfolio_2 from "./portfolio/portfolio-2.png";
@@ -31,7 +30,7 @@ export const IMAGES = {
   ritik_full,
   deliver_screen,
   faded_white,
-  funny_ritik,
+
   ellipse_footer,
   portfolio: {
     1: portfolio_1,

@@ -25,6 +25,7 @@ function BlogPage() {
       title: article?.title || "",
       slug: article?.slug?.current || "",
       publishedDate: article?.publishedAt || "",
+      description: article?.description || "",
       mainImage: article?.mainImage?.asset?.url || "",
       author: {
         name: article?.author?.name || "",

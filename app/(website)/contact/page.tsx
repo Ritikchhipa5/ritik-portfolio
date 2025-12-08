@@ -7,16 +7,23 @@ import Link from "next/link";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
 import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("https://calendly.com/ritikchhipa5");
+  };
+
   return (
     <>
-      <div className="relative w-full     py-20 bg-[#EAFECF] overflow-hidden">
+      <div className="relative w-full     py-20 overflow-hidden">
         <div
           className="absolute  inset-0 bg-cover bg-center opacity-90"
-          style={{
-            backgroundImage: `url(${IMAGES.ellipse.src})`,
-          }}
+          // style={{
+          //   backgroundImage: `url(${IMAGES.ellipse.src})`,
+          // }}
         />
         <Image
           src={IMAGES.faded_white.src}
@@ -102,7 +109,11 @@ export default function ContactPage() {
             transition={{ delay: 0.5 }}
             className="mt-14"
           >
-            <Button size="xl" className="group  md:my-0 rounded-full">
+            <Button
+              onClick={handleClick}
+              size="xl"
+              className="group  md:my-0 rounded-full"
+            >
               <Calendar className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
               <span className="text-base"> Book a Call</span>
             </Button>
