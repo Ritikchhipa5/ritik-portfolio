@@ -37,7 +37,7 @@ function ArticlePage() {
     };
   }, [article]);
 
-  if (!article) {
+  if (!article && !slug) {
     return null;
   }
 
