@@ -89,6 +89,10 @@ export default function RootLayout({
           name="p:domain_verify"
           content="9f7382bead040ea073ec7ec56997bc6e"
         />
+      </head>
+      <body
+        className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
+      >
         <Script
           id="adsense-script"
           strategy="afterInteractive"
@@ -96,10 +100,6 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4548722974359094"
           crossOrigin="anonymous"
         />
-      </head>
-      <body
-        className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
-      >
         {children}
       </body>
     </html>
