@@ -90,9 +90,23 @@ export default function RootLayout({
           content="9f7382bead040ea073ec7ec56997bc6e"
         />
       </head>
+
       <body
         className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
       >
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-TFKGWBDWZV"
+        ></Script>
+
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TFKGWBDWZV');
+          `}
+        </Script>
         <Script
           id="adsense-script"
           strategy="afterInteractive"
