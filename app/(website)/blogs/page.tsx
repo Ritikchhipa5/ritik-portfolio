@@ -7,11 +7,13 @@ import { useEffect, useMemo, useState } from "react";
 
 function BlogPage() {
   const [posts, setPosts] = useState<any>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const data = await getTopPosts();
       setPosts(data);
+      setLoading(false);
     })();
   }, []);
 
@@ -42,7 +44,7 @@ function BlogPage() {
           secondHeading="Thoughts & Tutorials"
         />
 
-        <BlogList posts={postsData} />
+        <BlogList posts={postsData} loading={loading} />
       </div>
     </div>
   );

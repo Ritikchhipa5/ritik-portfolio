@@ -38,7 +38,7 @@ export default function Header({ transition }: { transition: boolean }) {
       initial="center"
       animate={transition ? "topLeft" : "center"}
       transition={{ type: "spring", stiffness: 200, damping: 30 }}
-      className="absolute z-40  flex items-center justify-center"
+      className="sticky top-0 z-40   flex items-center justify-center"
     >
       <div className="relative max-w-7xl  size-full">
         {/* Left Name */}

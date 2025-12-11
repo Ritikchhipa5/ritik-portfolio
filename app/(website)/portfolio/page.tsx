@@ -11,9 +11,11 @@ import BlogList from "@/app/(website)/(components)/blog/blog-list";
 import { useEffect, useState } from "react";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 import { getPortfolios } from "@/api/portfolio";
+import { useRouter } from "next/navigation";
 
 export default function PortfolioPage() {
   const [portfolios, setPortfolios] = useState([]);
+  const { push } = useRouter();
 
   useEffect(() => {
     (async () => {
@@ -24,7 +26,7 @@ export default function PortfolioPage() {
 
   return (
     <>
-      <div className="relative w-full  z-50    py-20  overflow-hidden">
+      <div className="relative w-full  z-30    py-20  overflow-hidden">
         <Image
           src={IMAGES.faded_white.src}
           width={1600}
@@ -87,7 +89,7 @@ export default function PortfolioPage() {
           >
             <Button
               onClick={() => {
-                "/contact";
+                push("/contact");
               }}
               size="xl"
               className="group  md:my-0 rounded-full"
