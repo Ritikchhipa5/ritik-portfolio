@@ -47,7 +47,7 @@ export const PortfolioCard = ({
             src={images?.[0]?.asset?.url}
             alt={`Portfolio ${index + 1}`}
             fill
-            className="object-cover  inverted-radius "
+            className="object-cover  inverted-radius  "
           />
           <div className="absolute inset-0 rounded-[20px] bg-linear-to-tl bottom-0 right-0 top-0 left-0 from-white/0   to-black/50 from-10%" />
           <button

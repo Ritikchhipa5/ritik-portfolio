@@ -1,9 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
 
@@ -81,23 +78,6 @@ export default function PortfolioPage() {
             ))}
           </div>
           <BlogList />
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-14"
-          >
-            <Button
-              onClick={() => {
-                push("/contact");
-              }}
-              size="xl"
-              className="group  md:my-0 rounded-full"
-            >
-              <ArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-              <span className="text-base"> Get Touch</span>
-            </Button>
-          </motion.div>
         </div>
       </div>
     </>

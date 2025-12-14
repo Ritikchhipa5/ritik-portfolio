@@ -24,6 +24,7 @@ const BlogCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
+      className=" cursor-pointer"
     >
       <div className="rounded-xl border border-gray-200 hover:shadow-md transition-all ">
         <div className="p-2">

@@ -7,6 +7,7 @@ import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import CustomButton from "@/components/custom-btn";
 
 const hedline =
   "Building premium, scalable products with me. Creating web, mobile, UI, and beyond—experiences that truly work.";
@@ -188,14 +189,8 @@ const BottomSection = () => {
         </div>
       </div>
 
-      <Button
-        onClick={() => push("/contact")}
-        size="xl"
-        className="group  md:my-0 rounded-full"
-      >
-        <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-        <span className="text-base"> Get Touch</span>
-      </Button>
+      <CustomButton onClick={() => push("/contact")} label="Get Touch" />
+
       <div className="text-sm md:hidden block text-gray-700 font-dm-sans text-center max-w-xs">
         {hedline}
       </div>

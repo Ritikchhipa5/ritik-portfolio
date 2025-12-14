@@ -2,8 +2,7 @@
 import { getTopPortfolios } from "@/api/portfolio";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
-import { Button } from "@/components/ui/button";
-import { LucideArrowRight } from "lucide-react";
+import CustomButton from "@/components/custom-btn";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -37,14 +36,11 @@ function Portfolio() {
         ))}
       </div>
       <div className="flex justify-end">
-        <Button
+        <CustomButton
           onClick={() => push("/portfolio")}
-          size="xl"
-          className="group mt-10 rounded-full"
-        >
-          <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-          <span className="text-base"> See All Works</span>
-        </Button>
+          label="See All Works"
+          className="mt-10"
+        />
       </div>
     </div>
   );

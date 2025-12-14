@@ -8,6 +8,8 @@ import { IMAGES } from "@/assets/images";
 import Image from "next/image";
 import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
 import { useRouter } from "next/navigation";
+import SectionHeading from "@/app/(website)/(components)/section-heading";
+import CustomButton from "@/components/custom-btn";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -36,34 +38,12 @@ export default function ContactPage() {
         <div className="absolute inset-0 opacity-80 bg-[url('/ellipse.png')] bg-cover bg-center" />
 
         <div className="relative z-10 max-w-4xl mx-auto w-full px-4 text-center">
-          {/* Headline */}
-          <motion.h4
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="text-3xl font-newsreader italic font-extralight"
-          >
-            Let’s Connect
-          </motion.h4>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl mt-4 font-newsreader italic font-light"
-          >
-            Tell me about your project
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mt-6 text-gray-700 font-dm-sans max-w-xl mx-auto"
-          >
-            I build premium, scalable websites, apps, and digital experiences.
-            Let’s collaborate and bring your idea to life
-          </motion.p>
+          <SectionHeading
+            primaryHeading="Let’s Connect"
+            secondHeading="Tell me about your project"
+            paragraph="I build premium, scalable websites, apps, and digital
+          experiences. Let’s collaborate and bring your idea to life"
+          />
 
           {/* Social Cards */}
           <div className="grid md:grid-cols-2 gap-6 mt-16">
@@ -107,16 +87,13 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-14"
+            className="mt-14 flex justify-center"
           >
-            <Button
+            <CustomButton
+              icon={Calendar}
               onClick={handleClick}
-              size="xl"
-              className="group  md:my-0 rounded-full"
-            >
-              <Calendar className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-              <span className="text-base"> Book a Call</span>
-            </Button>
+              label="Book Call"
+            />
           </motion.div>
         </div>
       </div>

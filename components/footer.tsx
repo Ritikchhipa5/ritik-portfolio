@@ -2,9 +2,11 @@
 import { IMAGES } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/lib/constant";
-import { LucideArrowRight } from "lucide-react";
+import { ArrowUp, ArrowUpRight, LucideArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import CustomButton from "@/components/custom-btn";
 
 function Footer() {
   const { push } = useRouter();
@@ -20,25 +22,55 @@ function Footer() {
       <div className="z-10 relative overflow-hidden">
         <div className="max-w-7xl px-4 mx-auto  ">
           <div className="w-full text-center space-y-4 ">
-            <h1 className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal">
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              viewport={{
+                once: true,
+              }}
+              className="text-4xl sm:text-4xl md:text-6xl text-gray-900 lg:text-7xl font-dm-sans font-normal"
+            >
               Let’s make it happen
-            </h1>
+            </motion.h1>
 
-            <p className="  font-inter mx-auto max-w-lg w-full  text-gray-900 tracking-tight italic font-light">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{
+                once: true,
+              }}
+              className="  font-inter mx-auto max-w-lg w-full  text-gray-900 tracking-tight italic font-light"
+            >
               always open to new opportunities, collaborations, and creative
               challenges. Let&apos;s work together to bring your ideas to life
-            </p>
+            </motion.p>
 
-            <Button
-              onClick={() => push("/contact")}
-              size="xl"
-              className="group my-10 rounded-full"
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{
+                once: true,
+              }}
+              className="flex justify-center my-10"
             >
-              <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-              <span className="text-base"> Get Touch</span>
-            </Button>
+              <CustomButton
+                onClick={() => push("/contact")}
+                label="Get Touch"
+              />
+            </motion.div>
           </div>
-          <div className="flex mb-16 gap-10 md:flex-row flex-col items-center justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            viewport={{
+              once: true,
+            }}
+            className="flex mb-16 gap-10 md:flex-row flex-col items-center justify-between"
+          >
             <nav className="flex gap-8 flex-wrap justify-center    text-sm font-dm-sans text-gray-700 ">
               {routes.map((route, index) => (
                 <Link
@@ -53,15 +85,21 @@ function Footer() {
             <p className="text-xs font-dm-sans text-black/50">
               {new Date().getFullYear()} Ritik Chhipa. All rights reserved.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <h1
+      <motion.h1
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
+        viewport={{
+          once: true,
+        }}
         className=" block font-newsreader text-center bottom-0 relative   italic  text-[14vw]  leading-[0.9]  text-black  font-light
     "
       >
         Ritik Chhipa
-      </h1>
+      </motion.h1>
     </footer>
   );
 }

@@ -114,7 +114,7 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4548722974359094"
           crossOrigin="anonymous"
         />
-        {children}
+        <>{children}</>
       </body>
     </html>
   );

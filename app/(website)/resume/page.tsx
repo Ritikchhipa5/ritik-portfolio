@@ -12,12 +12,18 @@ import Link from "next/link";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { Button } from "@/components/ui/button";
 import { LucideArrowRight } from "lucide-react";
-
+import { motion } from "framer-motion";
+import CustomButton from "@/components/custom-btn";
 export default function Page() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center ">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen flex flex-col items-center justify-center "
+    >
       <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
         <div className="w-full text-center">
           {/* Heading 1 */}
@@ -36,14 +42,7 @@ export default function Page() {
           and beyond—experiences that truly work.
         </p>
         <div className="flex justify-center">
-          <Button
-            onClick={() => setModalOpen(true)}
-            size="xl"
-            className="group    md:my-0 rounded-full"
-          >
-            <LucideArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-            <span className="text-base"> My Resume</span>
-          </Button>
+          <CustomButton onClick={() => setModalOpen(true)} label="My Resume" />
         </div>
       </BackgroundLines>
 
@@ -73,6 +72,6 @@ export default function Page() {
           />
         </DialogContent>
       </Dialog>
-    </div>
+    </motion.div>
   );
 }

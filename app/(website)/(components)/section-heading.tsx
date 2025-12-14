@@ -1,18 +1,54 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 function SectionHeading({
   primaryHeading,
   secondHeading,
+  paragraph,
 }: {
   primaryHeading: string;
   secondHeading: string;
+  paragraph?: string;
 }) {
   return (
     <div className=" capitalize">
-      <h4 className="text-3xl relative z-10 font-newsreader italic text-center font-extralight">
+      <motion.h4
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        viewport={{
+          once: true,
+        }}
+        className="text-3xl relative z-10 font-newsreader italic text-center font-extralight"
+      >
         {primaryHeading}
-      </h4>
-      <h1 className="text-center font-newsreader mt-6 text-5xl italic font-light">
+      </motion.h4>
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{
+          once: true,
+        }}
+        className="text-center font-newsreader mt-6 text-5xl italic font-light"
+      >
         {secondHeading}
-      </h1>
+      </motion.h1>
+
+      {paragraph && (
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{
+            once: true,
+          }}
+          className="mt-6 text-gray-700 font-dm-sans max-w-xl mx-auto"
+        >
+          {paragraph}
+        </motion.p>
+      )}
     </div>
   );
 }
