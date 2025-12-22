@@ -24,7 +24,7 @@ function SectionHeading({
       >
         {primaryHeading}
       </motion.h4>
-      <motion.h1
+      <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -34,7 +34,7 @@ function SectionHeading({
         className="text-center font-newsreader mt-6 text-5xl italic font-light"
       >
         {secondHeading}
-      </motion.h1>
+      </motion.h2>
 
       {paragraph && (
         <motion.p

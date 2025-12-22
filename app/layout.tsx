@@ -28,7 +28,7 @@ const BASE_URL = "https://www.ritikchhipa.xyz";
 export const metadata = {
   title: "Ritik Chhipa — Full-Stack & Mobile App Developer",
   description:
-    "Ritik is a full-stack, mobile, and Web3 developer building premium, scalable digital products. Trusted by more than 50+ clients. Expert in web, mobile, backend, SaaS, UI/UX, and blockchain development.",
+    "Ritik is a full-stack, mobile, and Web3 developer building premium, scalable digital products. Trusted by more than 50+ clients.",
   keywords: [
     "Ritik Chhipa",
     "software developer",

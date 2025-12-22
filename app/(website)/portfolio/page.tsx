@@ -45,14 +45,14 @@ export default function PortfolioPage() {
             Portfolio
           </motion.h4>
 
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-5xl mt-4 font-newsreader italic font-light"
           >
             Best Works
-          </motion.h1>
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0 }}
