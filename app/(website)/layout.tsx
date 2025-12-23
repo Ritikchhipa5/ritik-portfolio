@@ -3,6 +3,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { cn } from "@/lib/utils";
+import LenisGsapProvider from "@/provider/lenis-gsap-provider";
 import React, { useEffect, useState } from "react";
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -17,22 +18,25 @@ function Layout({ children }: { children: React.ReactNode }) {
       clearTimeout(timer2);
     };
   }, []);
-  return (
-    <div
-      className={cn(
-        "relative h-dvh   w-full bg-white",
-        !isLoaded && "overflow-y-hidden"
-      )}
-    >
-      <Header transition={transition} />
-      {transition && (
-        <>
-          {children}
 
-          <Footer />
-        </>
-      )}
-    </div>
+  return (
+    <LenisGsapProvider>
+      <div
+        className={cn(
+          "relative min-h-screen  w-full bg-white",
+          !isLoaded && "overflow-y-hidden h-dvh"
+        )}
+      >
+        <Header transition={transition} />
+        {transition && (
+          <>
+            {children}
+
+            <Footer />
+          </>
+        )}
+      </div>
+    </LenisGsapProvider>
   );
 }
 

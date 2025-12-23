@@ -8,7 +8,7 @@ export const routes = [
     label: "About",
   },
   {
-    link: "/#portfolio",
+    link: "/portfolio",
     label: "Portfolio",
   },
   {
