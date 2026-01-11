@@ -1,40 +1,22 @@
-"use client";
-
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import BlogList from "@/app/(website)/(components)/blog/blog-list";
 import { getTopPosts } from "@/api/articles";
-import { useEffect, useMemo, useState } from "react";
 
-export function BlogSection() {
-  const [posts, setPosts] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
+async function BlogSection() {
+  const posts = await getTopPosts();
 
-  useEffect(() => {
-    (async () => {
-      const data = await getTopPosts();
-      setPosts(data);
-      setLoading(false);
-    })();
-  }, []);
-
-  const postsData = useMemo(() => {
-    if (!posts?.length) {
-      return [];
-    }
-
-    return posts?.map((article: any) => ({
-      body: article?.body || {},
-      title: article?.title || "",
-      slug: article?.slug?.current || "",
-      publishedDate: article?.publishedAt || "",
-      description: article?.description || "",
-      mainImage: article?.mainImage?.asset?.url || "",
-      author: {
-        name: article?.author?.name || "",
-        image: article?.author?.image?.asset?._ref || "",
-      },
-    }));
-  }, [posts]);
+  const postsData = posts?.map((article: any) => ({
+    body: article?.body || {},
+    title: article?.title || "",
+    slug: article?.slug?.current || "",
+    publishedDate: article?.publishedAt || "",
+    description: article?.description || "",
+    mainImage: article?.mainImage?.asset?.url || "",
+    author: {
+      name: article?.author?.name || "",
+      image: article?.author?.image?.asset?._ref || "",
+    },
+  }));
 
   return (
     <div className="relative py-10 md:py-20 w-full bg-white">
@@ -44,8 +26,10 @@ export function BlogSection() {
           secondHeading="Thoughts & Tutorials"
         />
 
-        <BlogList posts={postsData} loading={loading} />
+        <BlogList posts={postsData} loading={false} />
       </div>
     </div>
   );
 }
+
+export default BlogSection;

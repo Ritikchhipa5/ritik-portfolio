@@ -2,8 +2,6 @@
 
 import { IMAGES } from "@/assets/images";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { LucideArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";

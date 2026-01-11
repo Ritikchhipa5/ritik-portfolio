@@ -1,32 +1,17 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
-import { BlogSection } from "@/app/(website)/(components)/blog/blog-section";
-import { useRouter } from "next/navigation";
+
 import SectionHeading from "@/app/(website)/(components)/section-heading";
-import CustomButton from "@/components/custom-btn";
+
+import BlogSection from "@/app/(website)/(components)/blog/blog-section";
+import ContactSocialCards from "@/components/contact/contact-social-cards";
+import CalendlyButton from "@/app/(website)/contact/calendly-button";
 
 export default function ContactPage() {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push("https://calendly.com/ritikchhipa5");
-  };
-
   return (
     <>
       <div className="relative w-full     py-20 overflow-hidden">
-        <div
-          className="absolute  inset-0 bg-cover bg-center opacity-90"
-          // style={{
-          //   backgroundImage: `url(${IMAGES.ellipse.src})`,
-          // }}
-        />
+        <div className="absolute  inset-0 bg-cover bg-center opacity-90" />
         <Image
           src={IMAGES.faded_white.src}
           width={1600}
@@ -46,89 +31,12 @@ export default function ContactPage() {
           />
 
           {/* Social Cards */}
-          <div className="grid md:grid-cols-2 gap-6 mt-16">
-            {[
-              {
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg",
-                title: "Email Me",
-                link: "mailto:ritikchhipa5@gmail.com",
-              },
-              {
-                link: "https://www.linkedin.com/in/ritikchhipa5/",
-                title: "LinkedIn",
-                image:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0bGEl9v47XieEtHyj0TqTr1tOXJmib-KHtw&s",
-              },
-              {
-                link: "https://www.upwork.com/freelancers/~01567a14a1df3e84cd",
-                title: "Upwork",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Cib-upwork_%28CoreUI_Icons_v1.0.0%29.svg/640px-Cib-upwork_%28CoreUI_Icons_v1.0.0%29.svg.png",
-              },
-              {
-                link: "https://www.fiverr.com/rit9001586400",
-                title: "Fiverr",
-                image:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Fiverr_Logo_fiverr.png/1200px-Fiverr_Logo_fiverr.png?20240621044633",
-              },
-            ].map((contact, index) => (
-              <ContactCard
-                key={index}
-                title={contact.title}
-                image={contact?.image}
-                link={contact.link}
-              />
-            ))}
-          </div>
+          <ContactSocialCards />
 
-          {/* Calendly Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-14 flex justify-center"
-          >
-            <CustomButton
-              icon={Calendar}
-              onClick={handleClick}
-              label="Book Call"
-            />
-          </motion.div>
+          <CalendlyButton />
         </div>
       </div>
       <BlogSection />
     </>
   );
 }
-
-const ContactCard = ({
-  title,
-  link,
-  image,
-}: {
-  title: string;
-  link: string;
-  image: string;
-}) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    viewport={{ once: true }}
-  >
-    <Link href={link} target="_blank">
-      <div className="p-6 bg-white group shadow-sm border rounded-2xl flex items-center gap-4 hover:shadow-md transition-all cursor-pointer">
-        <Image
-          width={40}
-          height={40}
-          alt=""
-          src={image}
-          className="w-10 rounded-lg h-10"
-        />
-        <p className="text-md font-dm-sans flex-1 text-left ">{title}</p>
-        <ArrowRight className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1 scale-110" />
-      </div>
-    </Link>
-  </motion.div>
-);

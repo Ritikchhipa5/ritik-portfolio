@@ -1,21 +1,11 @@
-"use client";
 import { getTopPortfolios } from "@/api/portfolio";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import CustomButton from "@/components/custom-btn";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
-function Portfolio() {
-  const { push } = useRouter();
-  const [portfolios, setPortfolios] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const data = await getTopPortfolios();
-      setPortfolios(data);
-    })();
-  }, []);
+async function Portfolio() {
+  const portfolios = await getTopPortfolios();
 
   return (
     <div
@@ -24,7 +14,7 @@ function Portfolio() {
     >
       <SectionHeading primaryHeading="Portfolio" secondHeading="Best Works" />
       <div className="grid mt-12 grid-cols-1 md:grid-cols-2 gap-6">
-        {portfolios.map((item: any, index) => (
+        {portfolios?.map((item: any, index: number) => (
           <PortfolioCard
             title={item.title}
             description={item?.description}
@@ -36,11 +26,9 @@ function Portfolio() {
         ))}
       </div>
       <div className="flex justify-end">
-        <CustomButton
-          onClick={() => push("/portfolio")}
-          label="See All Works"
-          className="mt-10"
-        />
+        <Link href="/portfolio">
+          <CustomButton label="See All Works" className="mt-10" />
+        </Link>
       </div>
     </div>
   );

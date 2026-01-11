@@ -1,3 +1,4 @@
+"use client";
 import { PortfolioModal } from "@/app/(website)/(components)/portfolio-modal";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
