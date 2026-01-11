@@ -54,7 +54,7 @@ const BlogCard = ({
                 <Image
                   width={1000}
                   height={1000}
-                  className="aspect-square size-full"
+                  className="aspect-square object-cover  size-full"
                   alt="avatar"
                   src={urlFor(author?.image).url() || IMAGES.avatars[1].src}
                 />
