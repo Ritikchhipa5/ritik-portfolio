@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: any) {
 
   const title = article.title ?? "Blog";
   const description =
-    article.excerpt ?? article.title ?? "Read this blog article";
+    article.description ?? article.title ?? "Read this blog article";
   const image = article.mainImage?.asset?.url ?? "";
   const url = `https://your-domain.com/blogs/${slug}`;
 
