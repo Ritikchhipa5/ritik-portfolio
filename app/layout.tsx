@@ -26,38 +26,51 @@ const inter = Inter({
 const BASE_URL = "https://www.ritikchhipa.xyz";
 
 export const metadata = {
-  title: "Ritik Chhipa — Full-Stack & Mobile App Developer",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Ritik Chhipa — Full-Stack Developer & UI/UX Designer",
+    template: "%s | Ritik Chhipa",
+  },
   description:
-    "Ritik is a full-stack, mobile, and Web3 developer building premium, scalable digital products. Trusted by more than 50+ clients.",
+    "Ritik Chhipa is a full-stack developer, UI/UX designer, and mobile app engineer building premium, scalable digital products. Trusted by 50+ clients worldwide.",
   keywords: [
     "Ritik Chhipa",
-    "software developer",
     "full stack developer",
+    "UI UX designer",
     "mobile app developer",
-    "web developer",
+    "Next.js developer",
+    "React developer",
+    "Node.js developer",
+    "NestJS developer",
+    "React Native developer",
+    "SaaS developer",
     "Web3 developer",
     "blockchain developer",
-    "UI/UX designer",
-    "SaaS developer",
-    "Next.js portfolio",
-    "React Native developer",
-    "backend developer",
+    "software engineer for hire",
+    "freelance developer",
+    "product designer",
+    "design systems",
+    "AWS cloud developer",
+    "portfolio",
   ],
-  authors: [{ name: "Ritik Chhipa" }],
+  authors: [{ name: "Ritik Chhipa", url: BASE_URL }],
   creator: "Ritik Chhipa",
   publisher: "Ritik Chhipa",
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
-    title: "Ritik Chhipa — Full-Stack, Web3 & Mobile App Developer",
+    title: "Ritik Chhipa — Full-Stack Developer & UI/UX Designer",
     description:
       "Building premium, scalable products — web, mobile, UI/UX, SaaS, and blockchain. Trusted by 50+ clients worldwide.",
     url: BASE_URL,
-    siteName: "Ritik Chhipa Portfolio",
+    siteName: "Ritik Chhipa",
     images: [
       {
         url: `${BASE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Ritik Chhipa Portfolio",
+        alt: "Ritik Chhipa — Full-Stack Developer & UI/UX Designer",
       },
     ],
     locale: "en_US",
@@ -65,14 +78,21 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ritik Chhipa — Full-Stack Developer",
+    title: "Ritik Chhipa — Full-Stack Developer & UI/UX Designer",
     description:
-      "Full-stack, mobile, and Web3 developer creating high-performance digital products.",
+      "Building premium, scalable web & mobile products. UI/UX, SaaS, Web3. Trusted by 50+ clients worldwide.",
     images: [`${BASE_URL}/og-image.png`],
+    creator: "@ritikchhipa5",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -94,6 +114,45 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${inter.variable} ${newsreader.variable} `}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Ritik Chhipa",
+              url: BASE_URL,
+              image: `${BASE_URL}/og-image.png`,
+              jobTitle: "Full-Stack Developer & UI/UX Designer",
+              description:
+                "Full-stack developer, UI/UX designer, and mobile app engineer building premium, scalable digital products.",
+              email: "ritikchhipa5@gmail.com",
+              telephone: "+919001586400",
+              sameAs: [
+                "https://www.linkedin.com/in/ritikchhipa5/",
+                "https://www.upwork.com/freelancers/~01567a14a1df3e84cd",
+                "https://wa.me/919001586400",
+              ],
+              knowsAbout: [
+                "Next.js",
+                "React",
+                "Node.js",
+                "NestJS",
+                "React Native",
+                "UI/UX Design",
+                "AWS",
+                "Web3",
+                "TypeScript",
+                "Tailwind CSS",
+              ],
+              offers: {
+                "@type": "Offer",
+                description:
+                  "Freelance full-stack development, UI/UX design, and mobile app development services.",
+              },
+            }),
+          }}
+        />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-TFKGWBDWZV"

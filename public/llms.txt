@@ -1,0 +1,46 @@
+# Ritik Chhipa — Portfolio
+
+> Full-Stack Developer, UI/UX Designer, and Mobile App Engineer building premium, scalable digital products. Trusted by 50+ clients worldwide.
+
+## About
+
+Ritik Chhipa is an independent software developer and designer based in India, available globally. He specialises in end-to-end product development — from pixel-perfect UI/UX design and branding to production-grade web and mobile applications. He has worked with founders, startups, and enterprises across the US, UK, Europe, and Asia.
+
+## Services
+
+- Full-Stack Web Development (Next.js, React, Node.js, NestJS)
+- Mobile App Development (React Native)
+- UI/UX Design & Design Systems
+- SaaS Product Development
+- Cloud Infrastructure (AWS)
+- Blockchain / Web3 Development
+- Brand Identity & Visual Design
+
+## Tech Stack
+
+Frontend: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+Backend: Node.js, NestJS, Express, REST, GraphQL
+Mobile: React Native (iOS & Android)
+Database: PostgreSQL, MongoDB, Redis
+Cloud: AWS (EC2, S3, Lambda, RDS), Vercel, Supabase
+Web3: Solidity, Hardhat, Ethers.js
+
+## Pages
+
+- [Home](https://www.ritikchhipa.xyz/) — Hero, goal, tech stack, portfolio highlights, testimonials, blog, FAQ
+- [Portfolio](https://www.ritikchhipa.xyz/portfolio) — Full project showcase with case studies
+- [Blogs](https://www.ritikchhipa.xyz/blogs) — Technical articles and tutorials
+- [Contact](https://www.ritikchhipa.xyz/contact) — Hire page with email, LinkedIn, Upwork, WhatsApp
+- [Resume](https://www.ritikchhipa.xyz/resume) — Downloadable CV
+
+## Contact
+
+- Email: ritikchhipa5@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ritikchhipa5/
+- Upwork: https://www.upwork.com/freelancers/~01567a14a1df3e84cd
+- WhatsApp: https://wa.me/919001586400
+- Website: https://www.ritikchhipa.xyz
+
+## Availability
+
+Open to freelance projects, long-term contracts, and startup collaborations.
