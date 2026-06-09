@@ -24,7 +24,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 max-w-4xl mx-auto w-full px-4 text-center">
           <SectionHeading
-            primaryHeading="Let’s Connect"
+            primaryHeading="Hire Me"
             secondHeading="Tell me about your project"
             paragraph="I build premium, scalable websites, apps, and digital
           experiences. Let’s collaborate and bring your idea to life"
