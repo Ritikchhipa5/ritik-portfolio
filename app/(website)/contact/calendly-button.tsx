@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import CustomButton from "@/components/custom-btn";
-import { Calendar } from "lucide-react";
 
 function CalendlyButton() {
   const router = useRouter();
@@ -17,7 +16,7 @@ function CalendlyButton() {
       transition={{ delay: 0.5 }}
       className="mt-14 flex justify-center"
     >
-      <CustomButton icon={Calendar} onClick={handleClick} label="Book Call" />
+      <CustomButton onClick={handleClick} label="Book Call" />
     </motion.div>
   );
 }

@@ -23,4 +23,8 @@ export const routes = [
     link: "/resume",
     label: "Resume",
   },
+  {
+    link: "/#faq",
+    label: "FAQ",
+  },
 ];

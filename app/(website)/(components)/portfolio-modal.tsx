@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight, Link2 } from "lucide-react";
+import { X, ArrowUpRight } from "lucide-react";
 import { getLenis } from "@/provider/lenis-gsap-provider";
+import { useRouter } from "next/navigation";
 
 type SanityImage = {
   asset?: { url?: string };
@@ -28,6 +29,8 @@ export function PortfolioModal({
   tags = [],
   images,
 }: PortfolioModalProps) {
+  const router = useRouter();
+
   useEffect(() => {
     if (open) {
       getLenis()?.stop();
@@ -84,10 +87,6 @@ export function PortfolioModal({
                 {title}
               </h2>
               <div className="flex items-center gap-2 shrink-0">
-                <button className="hidden sm:flex items-center gap-1.5 text-[12px] text-neutral-500 border border-neutral-200 rounded-full px-3 py-1.5 hover:bg-neutral-50 transition font-inter">
-                  <Link2 size={11} />
-                  Copy link
-                </button>
                 <button
                   onClick={onClose}
                   className="h-8 w-8 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-500 hover:text-black transition"
@@ -143,14 +142,14 @@ export function PortfolioModal({
 
                 <div className="hidden md:block flex-1" />
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex items-center justify-center gap-2 w-full bg-black text-white text-[13px] font-medium font-dm-sans px-5 py-3 rounded-xl hover:bg-neutral-800 transition-colors mt-2 md:mt-0"
-                >
-                  Hire Me
-                  <ArrowUpRight size={14} strokeWidth={2.5} />
-                </motion.button>
+                <button onClick={() => router.push("/contact")} className="relative font-dm-sans font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-full overflow-hidden cursor-pointer bg-black text-white mt-2 md:mt-0">
+                  <span className="relative z-10 text-sm transition-all duration-500 whitespace-nowrap">
+                    Hire Me
+                  </span>
+                  <div className="absolute top-1 right-1 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
+                    <ArrowUpRight size={16} />
+                  </div>
+                </button>
               </div>
 
               {/* RIGHT : full-bleed scrollable image reel
