@@ -102,12 +102,16 @@ export default function WorkWithMeSection() {
           whileInView="visible"
           viewport={{ once: true }}
           onClick={() => push("/contact")}
-          className="group bg-black rounded-2xl p-6 flex flex-col justify-between gap-6 cursor-pointer hover:bg-neutral-900 transition-colors"
+          className="group relative bg-black rounded-2xl p-6 flex flex-col justify-between gap-6 cursor-pointer overflow-hidden transition-colors"
         >
-          <p className="font-newsreader italic text-3xl font-light text-white leading-snug">
+          {/* Lime gradient — appears on hover */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,_#a3e635_0%,_transparent_55%)] opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
+          <div className="absolute bottom-0 right-0 w-48 h-48 bg-lime-400 rounded-full blur-3xl opacity-0 group-hover:opacity-20 translate-x-1/4 translate-y-1/4 transition-opacity duration-500" />
+
+          <p className="relative z-10 font-newsreader italic text-3xl font-light text-white leading-snug">
             Got a project in mind?
           </p>
-          <span className="inline-flex items-center gap-2 text-white/60 font-dm-sans text-sm group-hover:text-white transition-colors">
+          <span className="relative z-10 inline-flex items-center gap-2 text-white/60 font-dm-sans text-sm group-hover:text-white transition-colors">
             Let's talk →
           </span>
         </motion.div>

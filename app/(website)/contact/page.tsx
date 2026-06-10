@@ -4,6 +4,7 @@ import Image from "next/image";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 
 import BlogSection from "@/app/(website)/(components)/blog/blog-section";
+import WhoAmI from "@/app/(website)/(components)/who-am-i";
 import ContactSocialCards from "@/components/contact/contact-social-cards";
 import CalendlyButton from "@/app/(website)/contact/calendly-button";
 
@@ -36,6 +37,7 @@ export default function ContactPage() {
           <CalendlyButton />
         </div>
       </div>
+      <WhoAmI />
       <BlogSection />
     </>
   );
