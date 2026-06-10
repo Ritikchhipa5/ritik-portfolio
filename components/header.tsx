@@ -1,9 +1,9 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { Logo } from "@/components/logo";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { IMAGES } from "@/assets/images";
 import { routes } from "@/lib/constant";
@@ -12,18 +12,20 @@ import { MenuVertical } from "@/components/ui/menu-vertical";
 
 const LOGO_WRAPPER_VARIANTS = {
   center: {
+    position: "fixed" as const,
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    height: "100%",
+    height: "100vh",
   },
   topLeft: {
+    position: "fixed" as const,
     top: 0,
     left: 0,
     right: 0,
     bottom: "auto",
-    height: "auto",
+    height: "80px",
   },
 };
 
@@ -31,6 +33,23 @@ export default function Header({ transition }: { transition: boolean }) {
   const isMobile = false;
   const { push } = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
+  const hideY = useMotionValue(0);
+  const springY = useSpring(hideY, { stiffness: 300, damping: 30 });
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y > lastScrollY.current && y > 100 && transition) {
+        hideY.set(-90);
+      } else if (y < lastScrollY.current) {
+        hideY.set(0);
+      }
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [transition, hideY]);
 
   return (
     <motion.header
@@ -38,10 +57,10 @@ export default function Header({ transition }: { transition: boolean }) {
       initial="center"
       animate={transition ? "topLeft" : "center"}
       transition={{ type: "spring", stiffness: 200, damping: 30 }}
-      className="flex items-center justify-center"
+      style={{ y: springY }}
+      className="z-40 flex items-center justify-center"
     >
-      <div className="relative max-w-7xl  size-full">
-        {/* Left Name */}
+      <div className="relative max-w-7xl size-full">
 
         {transition ? (
           <motion.div
