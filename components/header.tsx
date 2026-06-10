@@ -1,14 +1,13 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { Logo } from "@/components/logo";
 import { useEffect, useRef, useState } from "react";
 
-import { IMAGES } from "@/assets/images";
 import { routes } from "@/lib/constant";
 import { useRouter } from "next/navigation";
-import { MenuVertical } from "@/components/ui/menu-vertical";
+import { getLenis } from "@/provider/lenis-gsap-provider";
 
 const LOGO_WRAPPER_VARIANTS = {
   center: {
@@ -51,6 +50,22 @@ export default function Header({ transition }: { transition: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [transition, hideY]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    const lenis = getLenis();
+    if (menuOpen) {
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      lenis?.start();
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <motion.header
       variants={LOGO_WRAPPER_VARIANTS}
@@ -58,7 +73,7 @@ export default function Header({ transition }: { transition: boolean }) {
       animate={transition ? "topLeft" : "center"}
       transition={{ type: "spring", stiffness: 200, damping: 30 }}
       style={{ y: springY }}
-      className="z-40 flex items-center justify-center"
+      className="z-40 flex items-center justify-center "
     >
       <div className="relative max-w-7xl size-full">
 
@@ -66,7 +81,7 @@ export default function Header({ transition }: { transition: boolean }) {
           <motion.div
             onClick={() => push("/")}
             layoutId="logo"
-            className="absolute cursor-pointer z-110 left-5"
+            className="absolute cursor-pointer z-30 left-5"
             animate={{
               top: 32,
             }}
@@ -77,7 +92,7 @@ export default function Header({ transition }: { transition: boolean }) {
           <motion.div
             onClick={() => push("/")}
             layoutId="logo"
-            className="absolute cursor-pointer z-110 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="absolute cursor-pointer z-30 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             <Logo size={isMobile ? "lg" : "xl"} draw />
           </motion.div>
@@ -95,89 +110,76 @@ export default function Header({ transition }: { transition: boolean }) {
               : { top: 28, right: -43, opacity: 0 }
           }
           transition={{ type: "spring", stiffness: 200, damping: 30 }}
-          className="absolute z-110 flex items-center gap-x-4"
+          className="absolute z-50 flex items-center gap-x-4"
         >
-          {/* BUTTON WITH MENU → X ANIMATION */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="relative rounded-full bg-black/5 p-4 cursor-pointer"
+            className="h-8 w-8 rounded-full bg-black/5 hover:bg-black/10 cursor-pointer transition-colors flex items-center justify-center"
           >
-            {/* Menu Icon (rotates to cross) */}
-            <motion.div
-              animate={
-                menuOpen
-                  ? { rotate: 45, opacity: 0 }
-                  : { rotate: 0, opacity: 1 }
-              }
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <Menu size={16} />
-            </motion.div>
-
-            {/* X icon */}
-            <motion.div
-              animate={
-                menuOpen
-                  ? { rotate: 0, opacity: 1 }
-                  : { rotate: -45, opacity: 0 }
-              }
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <X size={16} />
-            </motion.div>
+            <Menu size={14} />
           </button>
         </motion.div>
 
         <AnimatePresence>
           {menuOpen && (
-            <motion.div
-              key="overlay"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ delay: 0.2, duration: 0.35, ease: "easeOut" }}
-              className="fixed inset-0 z-100 bg-white items-start flex flex-col justify-center will-change-transform"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-bottom will-change-transform"
-                style={{
-                  backgroundImage: `url(${IMAGES.ellipse_footer.src})`,
-                }}
+            <>
+              {/* Backdrop */}
+              <motion.div
+                key="backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setMenuOpen(false)}
+                className="fixed inset-0 z-99"
               />
 
-              <div className="flex flex-col z-10 max-w-7xl items-start w-full gap-4 mx-auto">
-                <MenuVertical
-                  handleClick={(link) => {
-                    setMenuOpen(false);
-                    push(link);
-                  }}
-                  menuItems={routes}
-                />
-                {/* {routes.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    // href={`#${item.label.toLowerCase()}`}
-                    onClick={() => {
-                      setMenuOpen(false);
-                      push(item.link);
-                    }}
-                    initial={{ opacity: 0, x: -80 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -80 }}
-                    transition={{
-                      delay: i * 0.1,
-                      duration: 0.4,
-                      ease: "easeOut",
-                    }}
-                    className="text-4xl inline-flex hover:bg-white/40 border-transparent border-2 hover:border-white py-3 rounded-full px-10 items-center text-gray-900 z-10 font-dm-sans hover:translate-x-3 transition"
+              {/* Right-side drawer */}
+              <motion.div
+                key="drawer"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", stiffness: 300, damping: 32 }}
+                className="fixed top-0 right-0 h-full w-full sm:w-80 z-100 bg-white/50 backdrop-blur-2xl shadow-xl flex flex-col"
+              >
+                {/* Header row */}
+                <div className="flex items-center justify-between px-6 py-5 border-b border-black/[0.06]">
+                  <span className="font-newsreader italic text-lg font-light text-gray-500">Menu</span>
+                  <button
+                    onClick={() => setMenuOpen(false)}
+                    className="h-8 w-8 rounded-full bg-black hover:bg-neutral-800 flex items-center justify-center text-white transition-colors"
                   >
-                    {item.label}
-                  </motion.div>
-                ))} */}
-              </div>
-            </motion.div>
+                    <X size={13} />
+                  </button>
+                </div>
+
+                {/* Nav links */}
+                <nav className="flex flex-col flex-1 px-4 py-6 gap-1 overflow-y-auto">
+                  {routes.map((item, i) => (
+                    <motion.button
+                      key={item.link}
+                      onClick={() => { setMenuOpen(false); push(item.link); }}
+                      initial={{ opacity: 0, x: 24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + i * 0.06, duration: 0.35, ease: "easeOut" }}
+                      className="group flex items-center justify-between px-4 py-3 rounded-xl text-gray-800 hover:bg-black/5 transition-colors text-left w-full"
+                    >
+                      <span className="font-dm-sans text-base font-medium">{item.label}</span>
+                      <ArrowRight size={14} className="text-neutral-300  group-hover:text-neutral-700 group-hover:translate-x-1 transition-all duration-200" />
+                    </motion.button>
+                  ))}
+                </nav>
+
+                {/* Footer */}
+                <div className="px-6 py-5 border-t border-black/[0.06]">
+                  <span className="flex items-center gap-2 text-gray-400 font-dm-sans text-xs">
+                    <span className="inline-block w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+                    Available for new projects
+                  </span>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
