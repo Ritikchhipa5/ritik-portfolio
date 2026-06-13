@@ -12,7 +12,16 @@ const TEAM = [
     role: "Software Engineer & Product Builder",
     bio: "Building end-to-end digital products — from fast MVPs to production-grade SaaS and mobile apps. 4+ years, 50+ clients, zero compromises on quality.",
     image: "/ritik-team.png",
-    tags: ["Next.js", "React Native", "Node.js", "NestJS", "AWS", "TypeScript", "PostgreSQL", "Redis"],
+    tags: [
+      "Next.js",
+      "React Native",
+      "Node.js",
+      "NestJS",
+      "AWS",
+      "TypeScript",
+      "PostgreSQL",
+      "Redis",
+    ],
     accent: "bg-lime-400",
     linkedin: "https://www.linkedin.com/in/ritikchhipa5/",
     website: "https://www.ritikchhipa.xyz",
@@ -23,7 +32,14 @@ const TEAM = [
     role: "UI/UX Designer",
     bio: "Crafting intuitive, pixel-perfect interfaces that users love. Specialised in product design, design systems, and brand identity.",
     image: "/angelina.png",
-    tags: ["Figma", "Design Systems", "Branding", "Prototyping", "UI Research", "Wireframing"],
+    tags: [
+      "Figma",
+      "Design Systems",
+      "Branding",
+      "Prototyping",
+      "UI Research",
+      "Wireframing",
+    ],
     accent: "bg-rose-400",
     linkedin: null,
     website: null,
@@ -63,9 +79,13 @@ export default function TeamSection() {
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-linear-to-br from-rose-50 to-pink-100">
                   <div className="w-24 h-24 rounded-full bg-rose-200 flex items-center justify-center">
-                    <span className="text-rose-500 text-4xl font-newsreader italic font-light">AK</span>
+                    <span className="text-rose-500 text-4xl font-newsreader italic font-light">
+                      AK
+                    </span>
                   </div>
-                  <p className="mt-3 text-rose-400 font-dm-sans text-xs">Photo coming soon</p>
+                  <p className="mt-3 text-rose-400 font-dm-sans text-xs">
+                    Photo coming soon
+                  </p>
                 </div>
               )}
 
@@ -76,7 +96,9 @@ export default function TeamSection() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-500" />
                   </span>
-                  <span className="text-[11px] font-dm-sans text-gray-700">Available</span>
+                  <span className="text-[11px] font-dm-sans text-gray-700">
+                    Available
+                  </span>
                 </div>
               )}
             </div>
@@ -85,8 +107,12 @@ export default function TeamSection() {
             <div className="p-6 space-y-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="font-dm-sans font-semibold text-lg text-gray-900">{member.name}</h3>
-                  <p className="font-newsreader italic text-gray-500 text-base">{member.role}</p>
+                  <h3 className="font-dm-sans font-semibold text-lg text-gray-900">
+                    {member.name}
+                  </h3>
+                  <p className="font-newsreader italic text-gray-500 text-base">
+                    {member.role}
+                  </p>
                 </div>
 
                 {/* Social links */}
@@ -114,7 +140,9 @@ export default function TeamSection() {
                 </div>
               </div>
 
-              <p className="font-dm-sans text-sm text-gray-500 leading-relaxed">{member.bio}</p>
+              <p className="font-dm-sans text-sm text-gray-500 leading-relaxed">
+                {member.bio}
+              </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 pt-1">
@@ -161,7 +189,9 @@ export default function TeamSection() {
               Have a project in mind?
             </p>
             <p className="font-dm-sans text-sm text-white/50 leading-relaxed">
-              We&apos;re a small, focused team that builds fast and ships quality. Tell us what you&apos;re working on — we&apos;d love to help.
+              We&apos;re a small, focused team that builds fast and ships
+              quality. Tell us what you&apos;re working on — we&apos;d love to
+              help.
             </p>
           </div>
 
@@ -170,7 +200,10 @@ export default function TeamSection() {
               Let&apos;s talk
             </span>
             <span className="h-10 w-10 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform">
-              <ArrowRight size={16} className="text-black group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight
+                size={16}
+                className="text-black group-hover:translate-x-0.5 transition-transform"
+              />
             </span>
           </div>
         </motion.div>

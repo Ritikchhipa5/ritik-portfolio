@@ -10,6 +10,7 @@ import FaqSection from "@/app/(website)/(components)/faq-section";
 import WorkWithMeSection from "@/app/(website)/(components)/work-with-me";
 import WhyChooseMeSection from "@/app/(website)/(components)/why-choose-me";
 import TeamSection from "@/app/(website)/(components)/team-section";
+import CaseStudiesSection from "@/app/(website)/(components)/case-studies-section";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <WorkWithMeSection />
       <TechnologySection />
       <Portfolio />
+      <CaseStudiesSection />
       <WhatIBringSection />
       <WhyChooseMeSection />
       <TeamSection />
