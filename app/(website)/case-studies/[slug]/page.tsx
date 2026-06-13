@@ -1,29 +1,29 @@
 "use client";
 
 import { notFound, useRouter } from "next/navigation";
-import { use } from "react";
+import { use, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowUpRight,
   Quote,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { CASE_STUDIES } from "@/data/case-studies";
 import CustomButton from "@/components/custom-btn";
-
-const CATEGORY_TEXT: Record<string, string> = {
-  "bg-sky-400": "text-sky-700 bg-sky-50 border-sky-100",
-  "bg-purple-400": "text-purple-700 bg-purple-50 border-purple-100",
-  "bg-lime-500": "text-lime-700 bg-lime-50 border-lime-100",
-  "bg-orange-400": "text-orange-700 bg-orange-50 border-orange-100",
-};
 
 const ACCENT_BG: Record<string, string> = {
   "bg-sky-400": "bg-sky-400",
   "bg-purple-400": "bg-purple-400",
   "bg-lime-500": "bg-lime-400",
   "bg-orange-400": "bg-orange-400",
+  "bg-emerald-500": "bg-emerald-500",
+  "bg-teal-500": "bg-teal-500",
+  "bg-rose-500": "bg-rose-500",
 };
 
 const fadeUp = (delay = 0) => ({
@@ -39,19 +39,25 @@ export default function CaseStudyDetailPage({
 }) {
   const { slug } = use(params);
   const { push } = useRouter();
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollBy = (dir: "left" | "right") => {
+    scrollRef.current?.scrollBy({ left: dir === "right" ? 820 : -820, behavior: "smooth" });
+  };
+
+  const [challengeExpanded, setChallengeExpanded] = useState(false);
+  const [solutionExpanded, setSolutionExpanded] = useState(false);
+
   const cs = CASE_STUDIES.find((c) => c.slug === slug);
 
   if (!cs) notFound();
 
-  const badgeClass =
-    CATEGORY_TEXT[cs.categoryColor] ??
-    "text-neutral-600 bg-neutral-50 border-neutral-100";
   const accentBg = ACCENT_BG[cs.categoryColor] ?? "bg-lime-400";
 
   return (
     <main className="min-h-screen">
-      {/* Back link */}
-      <div className="px-4 max-w-7xl mx-auto pt-8">
+      {/* Back link — pt-24 clears the 80px fixed header */}
+      <div className="px-4 max-w-7xl mx-auto pt-24">
         <Link
           href="/case-studies"
           className="inline-flex items-center gap-2 font-dm-sans text-sm text-gray-400 hover:text-gray-900 transition-colors group"
@@ -68,14 +74,6 @@ export default function CaseStudyDetailPage({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left: title block */}
           <div className="space-y-6">
-            <motion.div {...fadeUp(0)} className="flex items-center gap-3">
-              <span
-                className={`text-[11px] font-inter font-medium px-3 py-1 rounded-full border ${badgeClass}`}
-              >
-                {cs.category}
-              </span>
-            </motion.div>
-
             <motion.h1
               {...fadeUp(0.08)}
               className="font-newsreader italic text-5xl md:text-6xl font-light text-gray-900 leading-tight"
@@ -135,6 +133,73 @@ export default function CaseStudyDetailPage({
         </motion.div>
       </section>
 
+      {/* ── Image scroll ── */}
+      {cs.images && cs.images.length > 0 && (
+        <section className="px-4 max-w-7xl mx-auto pb-14 md:pb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="relative"
+          >
+            {/* Left arrow */}
+            <button
+              onClick={() => scrollBy("left")}
+              className="absolute left-3 top-[44%] -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow-md border border-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-black hover:border-black hover:text-white transition-all duration-200"
+            >
+              <ChevronLeft size={17} />
+            </button>
+
+            {/* Scroll row */}
+            <div
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2"
+              style={{ scrollbarWidth: "none" }}
+            >
+              {cs.images.map((img, i) => (
+                <div
+                  key={i}
+                  className="relative shrink-0 snap-start rounded-2xl overflow-hidden border border-neutral-100 bg-neutral-50"
+                  style={{ width: "min(820px, 88vw)" }}
+                >
+                  {/* Browser chrome */}
+                  <div className="flex items-center gap-1.5 px-4 py-3 bg-white border-b border-neutral-100">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
+                    <span className="ml-3 text-[11px] font-inter text-neutral-400 bg-neutral-50 border border-neutral-100 rounded px-3 py-0.5">
+                      {cs.siteUrl ?? cs.slug}
+                    </span>
+                  </div>
+
+                  <div className="relative aspect-[16/10]">
+                    <Image
+                      src={img.src}
+                      alt={img.label}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Label */}
+                  <div className="px-5 py-3 bg-white border-t border-neutral-100">
+                    <p className="font-dm-sans text-xs text-gray-400">{img.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right arrow */}
+            <button
+              onClick={() => scrollBy("right")}
+              className="absolute right-3 top-[44%] -translate-y-1/2 z-20 h-10 w-10 rounded-full bg-white shadow-md border border-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-black hover:border-black hover:text-white transition-all duration-200"
+            >
+              <ChevronRight size={17} />
+            </button>
+          </motion.div>
+        </section>
+      )}
+
       {/* Divider */}
       <div className="h-px bg-neutral-100 max-w-7xl mx-auto" />
 
@@ -167,9 +232,25 @@ export default function CaseStudyDetailPage({
               The Challenge
             </h2>
           </div>
-          <p className="font-dm-sans text-base text-gray-600 leading-relaxed max-w-2xl">
-            {cs.challenge}
-          </p>
+          <div className="max-w-2xl">
+            <div
+              className="overflow-hidden transition-all duration-500 ease-in-out"
+              style={{ maxHeight: challengeExpanded ? "600px" : "6rem" }}
+            >
+              <p className="font-dm-sans text-base text-gray-600 leading-relaxed">
+                {cs.challenge}
+              </p>
+            </div>
+            <button
+              onClick={() => setChallengeExpanded((p) => !p)}
+              className="mt-3 inline-flex items-center gap-1.5 font-dm-sans text-sm font-medium text-lime-500 hover:text-lime-600 transition-colors"
+            >
+              {challengeExpanded ? "Show less" : "Read more"}
+              <motion.span animate={{ rotate: challengeExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                <ChevronDown size={14} />
+              </motion.span>
+            </button>
+          </div>
         </motion.div>
 
         <div className="h-px bg-neutral-100" />
@@ -199,9 +280,25 @@ export default function CaseStudyDetailPage({
               The Solution
             </h2>
           </div>
-          <p className="font-dm-sans text-base text-gray-600 leading-relaxed max-w-2xl">
-            {cs.solution}
-          </p>
+          <div className="max-w-2xl">
+            <div
+              className="overflow-hidden transition-all duration-500 ease-in-out"
+              style={{ maxHeight: solutionExpanded ? "600px" : "6rem" }}
+            >
+              <p className="font-dm-sans text-base text-gray-600 leading-relaxed">
+                {cs.solution}
+              </p>
+            </div>
+            <button
+              onClick={() => setSolutionExpanded((p) => !p)}
+              className="mt-3 inline-flex items-center gap-1.5 font-dm-sans text-sm font-medium text-lime-500 hover:text-lime-600 transition-colors"
+            >
+              {solutionExpanded ? "Show less" : "Read more"}
+              <motion.span animate={{ rotate: solutionExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                <ChevronDown size={14} />
+              </motion.span>
+            </button>
+          </div>
         </motion.div>
       </section>
 
@@ -308,6 +405,7 @@ export default function CaseStudyDetailPage({
               <CustomButton
                 label="Let's talk"
                 onClick={() => push("/contact")}
+                inverted
               />
             </div>
           </div>

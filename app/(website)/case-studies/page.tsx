@@ -7,14 +7,8 @@ import { useRouter } from "next/navigation";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import { CASE_STUDIES } from "@/data/case-studies";
 
-const CATEGORIES = ["All", "SaaS", "AI Integration", "Mobile App"];
+const CATEGORIES = ["All", "Website", "SaaS", "Mobile App"];
 
-const CATEGORY_TEXT: Record<string, string> = {
-  "bg-sky-400": "text-sky-700 bg-sky-50 border-sky-100",
-  "bg-purple-400": "text-purple-700 bg-purple-50 border-purple-100",
-  "bg-lime-500": "text-lime-700 bg-lime-50 border-lime-100",
-  "bg-orange-400": "text-orange-700 bg-orange-50 border-orange-100",
-};
 
 export default function CaseStudiesPage() {
   const [active, setActive] = useState("All");
@@ -23,26 +17,15 @@ export default function CaseStudiesPage() {
   const filtered =
     active === "All"
       ? CASE_STUDIES
-      : CASE_STUDIES.filter((cs) => cs.category === active);
+      : CASE_STUDIES.filter((cs) => cs.categories.includes(active));
 
   return (
     <main className="min-h-screen">
       {/* Hero */}
       <section className="relative py-16 md:py-28 px-4 max-w-7xl mx-auto text-center">
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 text-[11px] font-inter text-lime-700 bg-lime-50 border border-lime-100 px-3 py-1.5 rounded-full mb-6"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-lime-500 animate-pulse" />
-          Real client work
-        </motion.span>
-
         <SectionHeading
           primaryHeading="Case Studies"
           secondHeading="From idea to impact"
-          paragraph="An inside look at the problems I've solved, the decisions I made, and the results we shipped together."
         />
 
         {/* Filter tabs */}
@@ -80,9 +63,6 @@ export default function CaseStudiesPage() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {filtered.map((cs, i) => {
-              const badgeClass =
-                CATEGORY_TEXT[cs.categoryColor] ??
-                "text-neutral-600 bg-neutral-50 border-neutral-100";
               return (
                 <motion.div
                   key={cs.slug}
@@ -101,11 +81,15 @@ export default function CaseStudiesPage() {
                   className="group cursor-pointer bg-card border rounded-3xl overflow-hidden flex flex-col md:flex-row hover:shadow-xl hover:shadow-black/6 transition-shadow duration-300"
                 >
                   {/* Left: metric column */}
-                  <div className="flex flex-col items-center justify-center bg-neutral-50 border-b md:border-b-0 md:border-r border-neutral-100 p-8 md:w-44 shrink-0">
-                    <span className="font-newsreader italic text-5xl font-light text-lime-500 leading-none">
+                  <div className="flex flex-col items-center justify-center bg-neutral-50 border-b md:border-b-0 md:border-r border-neutral-100 px-6 py-8 md:w-48 shrink-0">
+                    <span
+                      className={`font-newsreader italic font-light text-lime-500 leading-none text-center ${
+                        cs.metric.length > 5 ? "text-3xl" : "text-5xl"
+                      }`}
+                    >
                       {cs.metric}
                     </span>
-                    <span className="font-dm-sans text-[11px] text-gray-400 text-center mt-2 max-w-[100px] leading-tight">
+                    <span className="font-dm-sans text-[11px] text-gray-400 text-center mt-2 max-w-[110px] leading-tight">
                       {cs.metricLabel}
                     </span>
                   </div>
@@ -114,12 +98,7 @@ export default function CaseStudiesPage() {
                   <div className="flex flex-col flex-1 p-6 gap-4">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1">
-                        <span
-                          className={`text-[11px] font-inter font-medium px-2.5 py-1 rounded-full border ${badgeClass}`}
-                        >
-                          {cs.category}
-                        </span>
-                        <h2 className="font-newsreader italic text-2xl font-light text-gray-900 mt-3 leading-snug">
+                        <h2 className="font-newsreader italic text-2xl font-light text-gray-900 leading-snug">
                           {cs.title}
                         </h2>
                         <p className="font-dm-sans text-xs text-gray-400 mt-0.5">
@@ -132,7 +111,7 @@ export default function CaseStudiesPage() {
                       </span>
                     </div>
 
-                    <p className="font-dm-sans text-sm text-gray-500 leading-relaxed">
+                    <p className="font-dm-sans text-sm text-gray-500 leading-relaxed line-clamp-3">
                       {cs.description}
                     </p>
 
@@ -159,11 +138,21 @@ export default function CaseStudiesPage() {
         </AnimatePresence>
 
         {filtered.length === 0 && (
-          <div className="text-center py-20">
-            <p className="font-newsreader italic text-3xl text-gray-300">
-              No case studies in this category yet.
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="col-span-2 flex flex-col items-center justify-center py-28 gap-4"
+          >
+            <p className="font-newsreader italic text-4xl text-gray-200">
+              Nothing here yet.
             </p>
-          </div>
+            <p className="font-dm-sans text-sm text-gray-400 max-w-xs text-center leading-relaxed">
+              More work in this category is on the way — check back soon or{" "}
+              <span className="text-lime-500">view all</span> to see what&apos;s
+              live.
+            </p>
+          </motion.div>
         )}
       </section>
     </main>

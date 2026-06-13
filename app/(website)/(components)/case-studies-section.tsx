@@ -10,7 +10,6 @@ import { CASE_STUDIES } from "@/data/case-studies";
 
 const FEATURED = CASE_STUDIES.filter((cs) => cs.featured).slice(0, 3);
 
-
 export default function CaseStudiesSection() {
   const { push } = useRouter();
 
@@ -19,7 +18,6 @@ export default function CaseStudiesSection() {
       <SectionHeading
         primaryHeading="Case Studies"
         secondHeading="Real results"
-        paragraph="Deep dives into projects that moved the needle — from first commit to measurable impact."
       />
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -66,7 +64,7 @@ export default function CaseStudiesSection() {
                   </p>
                 </div>
 
-                <p className="font-dm-sans text-sm text-gray-500 group-hover:text-neutral-400 leading-relaxed transition-colors duration-400">
+                <p className="font-dm-sans text-sm text-gray-500 group-hover:text-neutral-400 leading-relaxed transition-colors duration-400 line-clamp-4">
                   {cs.description}
                 </p>
               </div>
