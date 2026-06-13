@@ -3,18 +3,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function SkeletonBlogPost() {
   return (
-    <div className="flex flex-col  space-y-4">
-      <Skeleton className="w-full  h-[220px]" />
-      <Skeleton className="h-4 w-[70%] " />
-      <Skeleton className="h-4 w-full " />
-      <Skeleton className="h-4 w-full " />
-      <div className="flex items-center space-x-4">
-        <Skeleton className="h-12 w-12 rounded-full" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[250px]" />
-          <Skeleton className="h-4 w-[200px]" />
-        </div>
+    <div className="flex flex-col gap-4">
+      <Skeleton className="w-full aspect-[16/10] rounded-2xl" />
+      <div className="flex items-center gap-2">
+        <Skeleton className="w-5 h-5 rounded-full shrink-0" />
+        <Skeleton className="h-3 w-24" />
+        <Skeleton className="h-3 w-16" />
       </div>
+      <Skeleton className="h-4 w-[85%]" />
+      <Skeleton className="h-4 w-[60%]" />
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-[80%]" />
     </div>
   );
 }
