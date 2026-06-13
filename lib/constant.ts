@@ -4,8 +4,8 @@ export const routes = [
     label: "Home",
   },
   {
-    link: "/#about",
-    label: "About",
+    link: "/case-studies",
+    label: "Case Studies",
   },
   {
     link: "/portfolio",
@@ -20,11 +20,11 @@ export const routes = [
     label: "Contact",
   },
   {
-    link: "/resume",
-    label: "Resume",
+    link: "/contact#about",
+    label: "About",
   },
   {
-    link: "/#faq",
-    label: "FAQ",
+    link: "/resume",
+    label: "Resume",
   },
 ];

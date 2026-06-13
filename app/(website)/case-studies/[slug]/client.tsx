@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
+  ArrowUpRight,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -43,6 +44,10 @@ export default function CaseStudyDetailClient({ cs }: { cs: CaseStudy }) {
 
   const accentBg = ACCENT_BG[cs.categoryColor] ?? "bg-lime-400";
 
+  const rawUrl = cs.siteUrl ?? null;
+  const fullUrl = rawUrl ? (rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`) : null;
+  const domain = fullUrl ? (() => { try { return new URL(fullUrl).hostname.replace(/^www\./, ""); } catch { return rawUrl; } })() : null;
+
   return (
     <main className="min-h-screen">
       {/* Back link */}
@@ -71,9 +76,25 @@ export default function CaseStudyDetailClient({ cs }: { cs: CaseStudy }) {
             <motion.p {...fadeUp(0.14)} className="font-newsreader italic text-xl text-gray-400 leading-snug">
               {cs.headline}
             </motion.p>
-            <motion.p {...fadeUp(0.18)} className="font-dm-sans text-sm text-gray-400">
-              {cs.client}
-            </motion.p>
+            <motion.div {...fadeUp(0.18)} className="flex items-center gap-3 flex-wrap">
+              <p className="font-dm-sans text-sm text-gray-400">{cs.client}</p>
+              {domain && fullUrl && (
+                <a
+                  href={fullUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 bg-lime-50 hover:bg-lime-100 border border-lime-200 text-lime-700 hover:text-lime-800 rounded-full px-3 py-1 text-[12px] font-medium font-inter transition-all group"
+                >
+                  <span className="w-3 h-3 rounded-full bg-lime-400 flex items-center justify-center shrink-0">
+                    <svg width="6" height="6" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                  </span>
+                  {domain}
+                  <ArrowUpRight size={10} className="opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </a>
+              )}
+            </motion.div>
           </div>
 
           <motion.div {...fadeUp(0.2)} className="bg-card border rounded-3xl p-8 space-y-4">
@@ -129,9 +150,24 @@ export default function CaseStudyDetailClient({ cs }: { cs: CaseStudy }) {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-                    <span className="ml-3 text-[11px] font-inter text-neutral-400 bg-neutral-50 border border-neutral-100 rounded px-3 py-0.5">
-                      {cs.siteUrl ?? cs.slug}
-                    </span>
+                    {domain && fullUrl ? (
+                      <a
+                        href={fullUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-3 inline-flex items-center gap-1.5 bg-lime-50 hover:bg-lime-100 border border-lime-200 text-lime-600 hover:text-lime-700 rounded px-3 py-0.5 text-[11px] font-medium font-inter transition-all group"
+                      >
+                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                        {domain}
+                        <ArrowUpRight size={9} className="opacity-0 group-hover:opacity-70 transition-opacity" />
+                      </a>
+                    ) : (
+                      <span className="ml-3 text-[11px] font-inter text-neutral-400 bg-neutral-50 border border-neutral-100 rounded px-3 py-0.5">
+                        {cs.slug}
+                      </span>
+                    )}
                   </div>
                   <div className="relative aspect-[16/10]">
                     <Image src={img.src} alt={img.label} fill className="object-cover" />
