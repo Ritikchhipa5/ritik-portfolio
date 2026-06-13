@@ -11,13 +11,20 @@ export const PortfolioCard = ({
   title,
   description,
   tags,
+  caseStudySlug,
+  siteUrl,
 }: {
   index: number;
   images: any[];
   tags: string[];
   title: string;
   description: string;
+  caseStudySlug?: string;
+  siteUrl?: string;
 }) => {
+  const domain = siteUrl
+    ? (() => { try { return new URL(siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`).hostname.replace(/^www\./, ""); } catch { return siteUrl; } })()
+    : null;
   const [active, setActive] = useState<any>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -35,7 +42,7 @@ export const PortfolioCard = ({
         whileHover={{ y: -6, transition: { type: "spring", stiffness: 380, damping: 26 } }}
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
-        onClick={() => setActive({ index, images, title, description, tags })}
+        onClick={() => setActive({ index, images, title, description, tags, caseStudySlug, siteUrl })}
         className="group cursor-pointer rounded-2xl bg-white border border-neutral-100 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-black/9 transition-shadow duration-300"
       >
         {/* ── Browser chrome ── */}
@@ -47,7 +54,7 @@ export const PortfolioCard = ({
           </div>
 
           <div className="flex flex-1 justify-center">
-            <div className="flex items-center gap-1.5 bg-neutral-50 border border-neutral-100 rounded-md px-3 py-[5px] max-w-[200px] w-full justify-center">
+            <div className={`flex items-center gap-1.5 rounded-md px-3 py-[5px] max-w-[200px] w-full justify-center transition-colors ${domain ? "bg-lime-50 border border-lime-200" : "bg-neutral-50 border border-neutral-100"}`}>
               <svg
                 width="9"
                 height="9"
@@ -55,12 +62,12 @@ export const PortfolioCard = ({
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2.5"
-                className="text-neutral-400 shrink-0"
+                className={domain ? "text-lime-500 shrink-0" : "text-neutral-400 shrink-0"}
               >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
-              <span className="text-[11px] text-neutral-400 font-inter truncate">
-                {title}
+              <span className={`text-[11px] font-inter truncate ${domain ? "text-lime-600 font-medium" : "text-neutral-400"}`}>
+                {domain ?? title}
               </span>
             </div>
           </div>
@@ -143,6 +150,8 @@ export const PortfolioCard = ({
           description={active.description}
           tags={active.tags}
           images={active.images}
+          caseStudySlug={active.caseStudySlug}
+          siteUrl={active.siteUrl}
         />
       )}
     </>

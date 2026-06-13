@@ -1,5 +1,91 @@
 import { client } from "@/sanity/lib/client";
 
+// ── Case Studies ────────────────────────────────────────────────────────────
+
+export async function getCaseStudies() {
+  return client.fetch(
+    `*[_type == "portfolio" && isCaseStudy == true] | order(order asc) {
+      _id,
+      title,
+      "slug": slug.current,
+      categories,
+      categoryColor,
+      client,
+      headline,
+      metric,
+      metricLabel,
+      description,
+      tags,
+      featured,
+      overview,
+      challenge,
+      solution,
+      results,
+      techStack,
+      siteUrl,
+      "images": images[]{
+        "src": asset->{ "url": url }.url,
+        "label": alt
+      },
+      "testimonial": testimonial{ quote, author, role }
+    }`,
+  );
+}
+
+export async function getFeaturedCaseStudies() {
+  return client.fetch(
+    `
+    
+    *[_type == "portfolio" && isCaseStudy == true && featured == true] | order(order asc) [0...3] 
+    {
+      _id,
+      title,
+      "slug": slug.current,
+      client,
+      description
+    }`,
+  );
+}
+
+export async function getCaseStudyBySlug(slug: string) {
+  return client.fetch(
+    `*[_type == "portfolio" && isCaseStudy == true && slug.current == $slug][0] {
+      _id,
+      title,
+      "slug": slug.current,
+      categories,
+      categoryColor,
+      client,
+      headline,
+      metric,
+      metricLabel,
+      description,
+      tags,
+      featured,
+      overview,
+      challenge,
+      solution,
+      results,
+      techStack,
+      siteUrl,
+      "images": images[]{
+        "src": asset->{ "url": url }.url,
+        "label": alt
+      },
+      "testimonial": testimonial{ quote, author, role }
+    }`,
+    { slug },
+  );
+}
+
+export async function getCaseStudySlugs() {
+  return client.fetch(
+    `*[_type == "portfolio" && isCaseStudy == true]{ "slug": slug.current }`,
+  );
+}
+
+// ── Portfolio ───────────────────────────────────────────────────────────────
+
 export async function getTopPortfolios() {
   const query = `
     *[_type == "portfolio" && enabled == true]{
@@ -8,6 +94,15 @@ export async function getTopPortfolios() {
       description,
       enabled,
       tags,
+      isCaseStudy,
+      siteUrl,
+      "slug": coalesce(
+        slug.current,
+        select(
+          isCaseStudy == true =>
+            *[_type == "portfolio" && isCaseStudy == true && title == ^.title && defined(slug.current)][0].slug.current
+        )
+      ),
       images[]{
         asset->{
           url

@@ -19,6 +19,8 @@ type PortfolioModalProps = {
   description: string;
   tags?: string[];
   images: SanityImage[];
+  caseStudySlug?: string;
+  siteUrl?: string;
 };
 
 export function PortfolioModal({
@@ -28,7 +30,12 @@ export function PortfolioModal({
   description,
   tags = [],
   images,
+  caseStudySlug,
+  siteUrl,
 }: PortfolioModalProps) {
+  const domain = siteUrl
+    ? (() => { try { return new URL(siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`).hostname.replace(/^www\./, ""); } catch { return siteUrl; } })()
+    : null;
   const router = useRouter();
 
   useEffect(() => {
@@ -105,51 +112,83 @@ export function PortfolioModal({
             >
 
               {/* LEFT : details */}
-              <div className="
-                flex flex-col gap-5
-                px-5 sm:px-7 py-6
-                md:w-80 shrink-0 md:overflow-y-auto
-                border-b md:border-b-0 md:border-r border-neutral-100
-              ">
-                <div className="space-y-2">
-                  <p className="text-[10px] uppercase tracking-[0.14em] text-neutral-400 font-inter">
-                    Project description
-                  </p>
-                  <p className="text-sm text-neutral-600 font-inter leading-relaxed">
-                    {description}
-                  </p>
+              <div className="flex flex-col md:w-80 shrink-0 min-h-0 border-b md:border-b-0 md:border-r border-neutral-100">
+
+                {/* Scrollable content */}
+                <div className="flex-1 overflow-y-auto flex flex-col gap-5 px-5 sm:px-7 py-6 min-h-0" data-lenis-prevent>
+                  <div className="space-y-2 text-left">
+                    <p className="text-[10px] uppercase tracking-[0.14em] text-neutral-400 font-inter">
+                      Project description
+                    </p>
+                    <p className="text-sm text-neutral-600 font-inter leading-relaxed text-left">
+                      {description}
+                    </p>
+                  </div>
+
+                  {domain && (
+                    <a
+                      href={siteUrl?.startsWith("http") ? siteUrl : `https://${siteUrl}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 bg-lime-50 hover:bg-lime-100 border border-lime-200 text-lime-700 hover:text-lime-800 rounded-full px-3 py-1.5 text-[12px] font-medium font-inter transition-all group w-fit"
+                    >
+                      <span className="w-3.5 h-3.5 rounded-full bg-lime-400 flex items-center justify-center shrink-0">
+                        <svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                      </span>
+                      {domain}
+                      <ArrowUpRight size={11} className="opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    </a>
+                  )}
+
+                  <div className="h-px bg-neutral-100" />
+
+                  {tags.length > 0 && (
+                    <div className="space-y-3">
+                      <p className="text-[10px] uppercase tracking-[0.14em] text-neutral-400 font-inter">
+                        Skills &amp; deliverables
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="text-[12px] font-inter text-neutral-700 bg-neutral-100 hover:bg-neutral-200 transition px-3 py-1.5 rounded-full"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="h-px bg-neutral-100" />
-
-                {tags.length > 0 && (
-                  <div className="space-y-3">
-                    <p className="text-[10px] uppercase tracking-[0.14em] text-neutral-400 font-inter">
-                      Skills &amp; deliverables
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="text-[12px] font-inter text-neutral-700 bg-neutral-100 hover:bg-neutral-200 transition px-3 py-1.5 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                {/* Pinned buttons — always visible */}
+                <div className="shrink-0 flex flex-col gap-3 px-5 sm:px-7 py-5 border-t border-neutral-100">
+                  <button onClick={() => router.push("/contact")} className="relative font-dm-sans font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-full overflow-hidden cursor-pointer bg-black text-white">
+                    <span className="relative z-10 text-sm transition-all duration-500 whitespace-nowrap">
+                      Hire Me
+                    </span>
+                    <div className="absolute top-1 right-1 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
+                      <ArrowUpRight size={16} />
                     </div>
-                  </div>
-                )}
+                  </button>
 
-                <div className="hidden md:block flex-1" />
+                  {caseStudySlug && (
+                    <button
+                      onClick={() => router.push(`/case-studies/${caseStudySlug}`)}
+                      className="relative font-dm-sans font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-full overflow-hidden cursor-pointer bg-neutral-100 text-black hover:bg-neutral-200"
+                    >
+                      <span className="relative z-10 text-sm transition-all duration-500 whitespace-nowrap">
+                        View Case Study
+                      </span>
+                      <div className="absolute top-1 right-1 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </button>
+                  )}
+                </div>
 
-                <button onClick={() => router.push("/contact")} className="relative font-dm-sans font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-full overflow-hidden cursor-pointer bg-black text-white mt-2 md:mt-0">
-                  <span className="relative z-10 text-sm transition-all duration-500 whitespace-nowrap">
-                    Hire Me
-                  </span>
-                  <div className="absolute top-1 right-1 w-10 h-10 bg-white text-black rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
-                    <ArrowUpRight size={16} />
-                  </div>
-                </button>
               </div>
 
               {/* RIGHT : full-bleed scrollable image reel

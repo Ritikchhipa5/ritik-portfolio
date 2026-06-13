@@ -22,6 +22,8 @@ async function Portfolio() {
             images={item.images}
             index={index}
             key={index}
+            caseStudySlug={item.isCaseStudy && item.slug ? item.slug : undefined}
+            siteUrl={item.siteUrl}
           />
         ))}
       </div>
