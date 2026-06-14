@@ -121,6 +121,9 @@ export async function getPortfolios() {
       title,
       description,
       tags,
+      siteUrl,
+      isCaseStudy,
+      "slug": slug.current,
       images[]{
         asset->{
           url

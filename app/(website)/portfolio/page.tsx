@@ -36,6 +36,8 @@ async function PortfolioPage() {
                 tags={item.tags}
                 index={index}
                 key={index}
+                siteUrl={item.siteUrl}
+                caseStudySlug={item.isCaseStudy ? item.slug : undefined}
               />
             ))}
           </div>
