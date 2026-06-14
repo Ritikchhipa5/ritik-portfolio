@@ -23,11 +23,12 @@ export async function generateMetadata({ params }: any) {
   const description =
     article.description ?? article.title ?? "Read this blog article";
   const image = article.mainImage?.asset?.url ?? "";
-  const url = `https://your-domain.com/blogs/${slug}`;
+  const url = `https://www.ritikchhipa.xyz/blogs/${slug}`;
 
   return {
     title,
     description,
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,

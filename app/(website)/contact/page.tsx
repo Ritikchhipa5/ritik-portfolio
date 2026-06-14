@@ -1,7 +1,20 @@
 import { IMAGES } from "@/assets/images";
 import Image from "next/image";
-
 import SectionHeading from "@/app/(website)/(components)/section-heading";
+
+export const metadata = {
+  title: "Hire Me — Work with Ritik Chhipa",
+  description:
+    "Ready to build your next product? Hire Ritik Chhipa — Top Rated Upwork freelancer with 100% Job Success. AI SaaS, React, Next.js, React Native. Book a free consultation today.",
+  alternates: { canonical: "https://www.ritikchhipa.xyz/contact" },
+  openGraph: {
+    title: "Hire Me — Work with Ritik Chhipa",
+    description:
+      "Top Rated Upwork freelancer. AI SaaS, React, Next.js, React Native. 100% Job Success. Book a consultation.",
+    url: "https://www.ritikchhipa.xyz/contact",
+    type: "website",
+  },
+};
 
 import BlogSection from "@/app/(website)/(components)/blog/blog-section";
 import WhoAmI from "@/app/(website)/(components)/who-am-i";

@@ -3,8 +3,21 @@ import Image from "next/image";
 import BlogList from "@/app/(website)/(components)/blog/blog-list";
 import { PortfolioCard } from "@/app/(website)/(components)/portfolio-card";
 import { getPortfolios } from "@/api/portfolio";
-
 import PortfolioHeader from "@/components/portfolio/portfolio-header";
+
+export const metadata = {
+  title: "Portfolio — Projects by Ritik Chhipa",
+  description:
+    "Browse Ritik Chhipa's portfolio of AI SaaS platforms, full-stack web apps, React Native mobile apps, and UI/UX projects delivered for clients across US, UK, Canada, Singapore, and UAE.",
+  alternates: { canonical: "https://www.ritikchhipa.xyz/portfolio" },
+  openGraph: {
+    title: "Portfolio — Projects by Ritik Chhipa",
+    description:
+      "AI SaaS, web, and mobile projects delivered for 50+ clients worldwide. React, Next.js, React Native, OpenAI.",
+    url: "https://www.ritikchhipa.xyz/portfolio",
+    type: "website",
+  },
+};
 
 async function PortfolioPage() {
   const portfolios = await getPortfolios();
