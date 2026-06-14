@@ -22,13 +22,13 @@ export default function CaseStudiesSectionClient({ featured }: { featured: CaseS
         {featured.map((cs, i) => (
           <motion.div
             key={cs.slug}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ delay: i * 0.05, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -6, transition: { type: "spring", stiffness: 340, damping: 24 } }}
             onClick={() => push(`/case-studies/${cs.slug}`)}
-            className="group relative bg-white border border-neutral-100 rounded-3xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl hover:shadow-black/20 transition-all duration-400"
+            className="group relative bg-white border border-neutral-100 rounded-3xl overflow-hidden cursor-pointer flex flex-col hover:shadow-2xl hover:shadow-black/20 transition-shadow duration-300"
           >
             <div className="absolute inset-0 bg-neutral-950 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none z-0" />
             <div className="absolute top-0 left-0 w-44 h-44 bg-[radial-gradient(circle_at_0%_0%,#a3e635_0%,transparent_70%)] opacity-20 group-hover:opacity-30 transition-opacity duration-400 pointer-events-none z-0 rounded-tl-3xl" />

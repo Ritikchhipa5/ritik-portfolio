@@ -62,19 +62,19 @@ export default function WorkWithMeSection() {
           return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 36 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{
-                delay: i * 0.08,
-                duration: 0.55,
+                delay: i * 0.05,
+                duration: 0.5,
                 ease: [0.22, 1, 0.36, 1],
               }}
               whileHover={{
                 y: -6,
                 transition: { type: "spring", stiffness: 340, damping: 24 },
               }}
-              className="group relative bg-white border border-neutral-100 rounded-3xl overflow-hidden flex flex-col hover:shadow-xl hover:shadow-black/8 transition-all duration-300"
+              className="group relative bg-white border border-neutral-100 rounded-3xl overflow-hidden flex flex-col hover:shadow-xl hover:shadow-black/8 transition-shadow duration-300"
             >
               {/* Lime corner glow */}
               <div className="absolute top-0 left-0 w-44 h-44 bg-[radial-gradient(circle_at_0%_0%,#a3e635_0%,transparent_70%)] opacity-20 group-hover:opacity-35 transition-opacity duration-400 pointer-events-none z-0 rounded-tl-3xl" />
@@ -106,12 +106,12 @@ export default function WorkWithMeSection() {
 
         {/* CTA card */}
         <motion.div
-          initial={{ opacity: 0, y: 36 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{
-            delay: SERVICES.length * 0.08,
-            duration: 0.55,
+            delay: SERVICES.length * 0.05,
+            duration: 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
           whileHover={{

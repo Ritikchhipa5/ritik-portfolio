@@ -28,12 +28,15 @@ function Layout({ children }: { children: React.ReactNode }) {
         )}
       >
         <Header transition={transition} />
-        {transition && (
-          <>
-            {children}
-            <Footer />
-          </>
-        )}
+        <div
+          className={cn(
+            "transition-opacity duration-700",
+            transition ? "opacity-100" : "opacity-0"
+          )}
+        >
+          {children}
+          <Footer />
+        </div>
       </div>
     </LenisGsapProvider>
   );

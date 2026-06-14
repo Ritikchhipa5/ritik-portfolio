@@ -31,12 +31,12 @@ export const PortfolioCard = ({
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 48 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{
-          duration: 0.55,
-          delay: (index % 2) * 0.12,
+          duration: 0.5,
+          delay: (index % 2) * 0.06,
           ease: [0.22, 1, 0.36, 1],
         }}
         whileHover={{ y: -6, transition: { type: "spring", stiffness: 380, damping: 26 } }}
