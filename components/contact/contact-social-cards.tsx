@@ -5,16 +5,14 @@ function ContactSocialCards() {
     <div className="grid md:grid-cols-2 gap-6 mt-16">
       {[
         {
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg",
+          image: "/social-icons/gmail.svg",
           title: "Email Me",
           link: "mailto:ritikchhipa5@gmail.com",
         },
         {
           link: "https://www.linkedin.com/in/ritikchhipa5/",
           title: "LinkedIn",
-          image:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0bGEl9v47XieEtHyj0TqTr1tOXJmib-KHtw&s",
+          image: "/social-icons/linkedin.png",
         },
         {
           link: "https://www.upwork.com/freelancers/~01567a14a1df3e84cd",
@@ -24,8 +22,7 @@ function ContactSocialCards() {
         {
           link: "https://wa.me/919001586400",
           title: "WhatsApp",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/120px-WhatsApp.svg.png",
+          image: "/social-icons/whatsapp.png",
         },
       ].map((contact, index) => (
         <ContactCard

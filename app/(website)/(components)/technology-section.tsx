@@ -4,60 +4,60 @@ import { TechnologyBadge } from "@/app/(website)/(components)/technology-badge";
 
 export const technologies = [
   // --- FRONTEND ---
-  { name: "Next.js",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",                                                                         link: "https://nextjs.org" },
-  { name: "React",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",                                                                           link: "https://react.dev" },
-  { name: "TypeScript",     img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",                                                                 link: "https://www.typescriptlang.org" },
-  { name: "JavaScript",     img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",                                                                 link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
-  { name: "Tailwind CSS",   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNhoXisDruJMDAq3Ltd-wuaMW2lGxck9wAKw&s",                                                        link: "https://tailwindcss.com" },
-  { name: "Redux",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",                                                                           link: "https://redux.js.org" },
-  { name: "React Native",   img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",                                                                           link: "https://reactnative.dev" },
-  { name: "Framer Motion",  img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPznwv7OeqDgGjrlZfT28XyX4J9oJyZ9TYwg&s",                                                       link: "https://www.framer.com/motion" },
+  { name: "Next.js",             img: "/tech-icons/nextjs.svg",          link: "https://nextjs.org" },
+  { name: "React",               img: "/tech-icons/react.svg",           link: "https://react.dev" },
+  { name: "TypeScript",          img: "/tech-icons/typescript.svg",      link: "https://www.typescriptlang.org" },
+  { name: "JavaScript",          img: "/tech-icons/javascript.svg",      link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+  { name: "Tailwind CSS",        img: "/tech-icons/tailwind.png",        link: "https://tailwindcss.com" },
+  { name: "Redux",               img: "/tech-icons/redux.svg",           link: "https://redux.js.org" },
+  { name: "React Native",        img: "/tech-icons/react.svg",           link: "https://reactnative.dev" },
+  { name: "Framer Motion",       img: "/tech-icons/framer-motion.png",   link: "https://www.framer.com/motion" },
 
   // --- DESIGN ---
-  { name: "Figma",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",                                                                           link: "https://www.figma.com" },
-  { name: "Canva",          img: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/canva-icon.png",                                                           link: "https://www.canva.com" },
+  { name: "Figma",               img: "/tech-icons/figma.svg",           link: "https://www.figma.com" },
+  { name: "Canva",               img: "/tech-icons/canva.png",           link: "https://www.canva.com" },
 
   // --- BACKEND ---
-  { name: "Node.js",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",                                                                         link: "https://nodejs.org" },
-  { name: "NestJS",         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUDlYKWwiHIBw0AwCCpREi9UdXkn0JlZkyCw&s",                                                       link: "https://nestjs.com" },
-  { name: "Express",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",                                                                       link: "https://expressjs.com" },
-  { name: "Prisma",         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg",                                                                         link: "https://www.prisma.io" },
-  { name: "GraphQL",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",                                                                          link: "https://graphql.org" },
-  { name: "tRPC",           img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ74a8w-Diwa-7wz69TRXnC1wmRxQKC0UdDQ&s",                                                       link: "https://trpc.io" },
+  { name: "Node.js",             img: "/tech-icons/nodejs.svg",          link: "https://nodejs.org" },
+  { name: "NestJS",              img: "/tech-icons/nestjs.png",          link: "https://nestjs.com" },
+  { name: "Express",             img: "/tech-icons/express.svg",         link: "https://expressjs.com" },
+  { name: "Prisma",              img: "/tech-icons/prisma.svg",          link: "https://www.prisma.io" },
+  { name: "GraphQL",             img: "/tech-icons/graphql.svg",         link: "https://graphql.org" },
+  { name: "tRPC",                img: "/tech-icons/trpc.png",            link: "https://trpc.io" },
 
   // --- DATABASES ---
-  { name: "PostgreSQL",     img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",                                                                 link: "https://www.postgresql.org" },
-  { name: "MySQL",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",                                                                           link: "https://www.mysql.com" },
-  { name: "MongoDB",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",                                                                       link: "https://www.mongodb.com" },
-  { name: "SQLite",         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",                                                                         link: "https://www.sqlite.org" },
-  { name: "Redis",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",                                                                           link: "https://redis.io" },
+  { name: "PostgreSQL",          img: "/tech-icons/postgresql.svg",      link: "https://www.postgresql.org" },
+  { name: "MySQL",               img: "/tech-icons/mysql.svg",           link: "https://www.mysql.com" },
+  { name: "MongoDB",             img: "/tech-icons/mongodb.svg",         link: "https://www.mongodb.com" },
+  { name: "SQLite",              img: "/tech-icons/sqlite.svg",          link: "https://www.sqlite.org" },
+  { name: "Redis",               img: "/tech-icons/redis.svg",           link: "https://redis.io" },
 
   // --- CLOUD & DEVOPS ---
-  { name: "AWS",            img: "https://static.vecteezy.com/system/resources/thumbnails/066/712/306/small/aws-icon-logo-symbol-free-png.png",                                           link: "https://aws.amazon.com" },
-  { name: "Docker",         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",                                                                         link: "https://www.docker.com" },
-  { name: "Nginx",          img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",                                                                           link: "https://nginx.org" },
-  { name: "Vercel",         img: "https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png",                                                                               link: "https://vercel.com" },
-  { name: "Netlify",        img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",                                                                       link: "https://www.netlify.com" },
-  { name: "Supabase",       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",                                                                     link: "https://supabase.com" },
-  { name: "Firebase",       img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",                                                                        link: "https://firebase.google.com" },
+  { name: "AWS",                 img: "/tech-icons/aws.png",             link: "https://aws.amazon.com" },
+  { name: "Docker",              img: "/tech-icons/docker.svg",          link: "https://www.docker.com" },
+  { name: "Nginx",               img: "/tech-icons/nginx.svg",           link: "https://nginx.org" },
+  { name: "Vercel",              img: "/tech-icons/vercel.png",          link: "https://vercel.com" },
+  { name: "Netlify",             img: "/tech-icons/netlify.svg",         link: "https://www.netlify.com" },
+  { name: "Supabase",            img: "/tech-icons/supabase.svg",        link: "https://supabase.com" },
+  { name: "Firebase",            img: "/tech-icons/firebase.svg",        link: "https://firebase.google.com" },
 
   // --- VERSION CONTROL ---
-  { name: "Git",            img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",                                                                               link: "https://git-scm.com" },
-  { name: "GitHub",         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",                                                                         link: "https://github.com" },
-  { name: "GitLab",         img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg",                                                                         link: "https://gitlab.com" },
+  { name: "Git",                 img: "/tech-icons/git.svg",             link: "https://git-scm.com" },
+  { name: "GitHub",              img: "/tech-icons/github.svg",          link: "https://github.com" },
+  { name: "GitLab",              img: "/tech-icons/gitlab.svg",          link: "https://gitlab.com" },
 
   // --- PAYMENTS / AUTH ---
-  { name: "Stripe",         img: "https://s3-eu-west-1.amazonaws.com/tpd/logos/50489e6800006400051ae0d6/0x0.png",                                                                         link: "https://stripe.com" },
-  { name: "Clerk Auth",     img: "https://pipedream.com/s.v0/app_dBhw8k/logo/orig",                                                                                                       link: "https://clerk.com" },
+  { name: "Stripe",              img: "/tech-icons/stripe.png",          link: "https://stripe.com" },
+  { name: "Clerk Auth",          img: "/tech-icons/clerk.png",           link: "https://clerk.com" },
 
   // --- ANALYTICS ---
-  { name: "Google Analytics", img: "https://images.icon-icons.com/2699/PNG/512/google_analytics_image_logo_icon_168152.png",                                                              link: "https://analytics.google.com" },
+  { name: "Google Analytics",    img: "/tech-icons/google-analytics.png", link: "https://analytics.google.com" },
 
   // --- WEB3 ---
-  { name: "Ethereum / Ethers.js", img: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=032",                                                                                        link: "https://ethers.org" },
-  { name: "Solana",         img: "https://cryptologos.cc/logos/solana-sol-logo.svg?v=032",                                                                                                link: "https://solana.com" },
-  { name: "WalletConnect",  img: "https://raw.githubusercontent.com/WalletConnect/walletconnect-assets/master/Icon/Blue%20(Default)/Icon.svg",                                            link: "https://walletconnect.com" },
-  { name: "Metamask",       img: "https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg",                                                                                  link: "https://metamask.io" },
+  { name: "Ethereum / Ethers.js", img: "/tech-icons/ethereum.svg",      link: "https://ethers.org" },
+  { name: "Solana",              img: "/tech-icons/solana.svg",          link: "https://solana.com" },
+  { name: "WalletConnect",       img: "/tech-icons/walletconnect.svg",   link: "https://walletconnect.com" },
+  { name: "Metamask",            img: "/tech-icons/metamask.svg",        link: "https://metamask.io" },
 ];
 
 const chunkSize = Math.ceil(technologies.length / 3);
