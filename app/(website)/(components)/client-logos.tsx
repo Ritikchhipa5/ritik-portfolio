@@ -9,7 +9,6 @@ const LOGOS = [
   { src: "/logos/logo-kali.svg", alt: "Kali" },
   { src: "/logos/logo-rapidrent.svg", alt: "RapidRent" },
   { src: "/logos/logo-5.svg", alt: "Client" },
-  { src: "/logos/logo-thrive.png", alt: "Thrive Finance" },
   { src: "/logos/logo-molar.png", alt: "Molar HQ" },
 ];
 
@@ -19,9 +18,9 @@ function LogoItem({ src, alt }: { src: string; alt: string }) {
       <Image
         src={src}
         alt={alt}
-        width={80}
-        height={32}
-        className="h-6 w-auto object-contain"
+        width={120}
+        height={48}
+        className="h-9 w-auto object-contain"
       />
     </div>
   );
@@ -39,7 +38,7 @@ export default function ClientLogos() {
         {/* Right fade */}
         <div className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10 bg-gradient-to-l from-white to-transparent" />
 
-        <Marquee pauseOnHover repeat={4} className="[--duration:30s] [--gap:3rem]">
+        <Marquee pauseOnHover repeat={4} className="[--duration:30s] [--gap:5rem]">
           {LOGOS.map((logo, i) => (
             <LogoItem key={i} {...logo} />
           ))}
