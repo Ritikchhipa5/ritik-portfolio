@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowUpRight } from "lucide-react";
@@ -23,6 +24,32 @@ type PortfolioModalProps = {
   siteUrl?: string;
 };
 
+function ModalImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <>
+      {!loaded && (
+        <div className="absolute inset-0 rounded-xl overflow-hidden">
+          <div className="absolute inset-0 bg-lime-50" />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-lime-200/60 to-transparent"
+            animate={{ x: ["-100%", "100%"] }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
+          />
+        </div>
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 768px) 100vw, 70vw"
+        className={`object-contain transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  );
+}
+
 export function PortfolioModal({
   open,
   onClose,
@@ -37,6 +64,8 @@ export function PortfolioModal({
     ? (() => { try { return new URL(siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`).hostname.replace(/^www\./, ""); } catch { return siteUrl; } })()
     : null;
   const router = useRouter();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (open) {
@@ -57,12 +86,13 @@ export function PortfolioModal({
   }, [open, onClose]);
 
   if (!images || images.length === 0) return null;
+  if (!mounted) return null;
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-8 "
+          className="fixed inset-0 z-[110] flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-8 "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -78,7 +108,7 @@ export function PortfolioModal({
 
           <motion.div
             className="
-              relative z-10 w-full sm:max-w-6xl bg-white shadow-2xl
+              relative z-10 w-full sm:max-w-[90vw] bg-white shadow-2xl
               rounded-none sm:rounded-2xl overflow-hidden
               flex flex-col
               h-screen sm:h-[90vh]
@@ -200,16 +230,12 @@ export function PortfolioModal({
                   img?.asset?.url ? (
                     <div
                       key={i}
-                      className="relative w-full shrink-0 overflow-hidden rounded-xl"
+                      className="relative w-full shrink-0 overflow-hidden rounded-xl bg-neutral-50"
                       style={{ height: "min(calc(90vh - 80px), 90vw)" }}
                     >
-                      <Image
+                      <ModalImage
                         src={img.asset.url}
                         alt={img.alt || `${title} – screen ${i + 1}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 64vw"
-                        className="object-cover"
-                        priority={i === 0}
                       />
 
                       {/* counter badge */}
@@ -242,6 +268,7 @@ export function PortfolioModal({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
