@@ -10,6 +10,7 @@ const LOGOS = [
   { src: "/logos/logo-rapidrent.svg", alt: "RapidRent" },
   { src: "/logos/logo-5.svg", alt: "Client" },
   { src: "/logos/logo-molar.png", alt: "Molar HQ" },
+  { src: "/logos/logo-zapswap.svg", alt: "ZapSwap" },
 ];
 
 function LogoItem({ src, alt }: { src: string; alt: string }) {
@@ -38,7 +39,11 @@ export default function ClientLogos() {
         {/* Right fade */}
         <div className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10 bg-gradient-to-l from-white to-transparent" />
 
-        <Marquee pauseOnHover repeat={4} className="[--duration:30s] [--gap:5rem]">
+        <Marquee
+          pauseOnHover
+          repeat={4}
+          className="[--duration:30s] [--gap:5rem]"
+        >
           {LOGOS.map((logo, i) => (
             <LogoItem key={i} {...logo} />
           ))}
