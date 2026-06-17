@@ -1,10 +1,11 @@
+import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 
 // ── Case Studies ────────────────────────────────────────────────────────────
 
 export async function getCaseStudies() {
-  return client.fetch(
-    `*[_type == "portfolio" && isCaseStudy == true] | order(order asc) {
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolio" && isCaseStudy == true] | order(order asc) {
       _id,
       title,
       "slug": slug.current,
@@ -29,14 +30,13 @@ export async function getCaseStudies() {
       },
       "testimonial": testimonial{ quote, author, role }
     }`,
-  );
+  });
+  return data;
 }
 
 export async function getFeaturedCaseStudies() {
-  return client.fetch(
-    `
-    
-    *[_type == "portfolio" && isCaseStudy == true && featured == true] | order(order asc) [0...3] 
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolio" && isCaseStudy == true && featured == true] | order(order asc) [0...3]
     {
       _id,
       title,
@@ -44,12 +44,13 @@ export async function getFeaturedCaseStudies() {
       client,
       description
     }`,
-  );
+  });
+  return data;
 }
 
 export async function getCaseStudyBySlug(slug: string) {
-  return client.fetch(
-    `*[_type == "portfolio" && isCaseStudy == true && slug.current == $slug][0] {
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolio" && isCaseStudy == true && slug.current == $slug][0] {
       _id,
       title,
       "slug": slug.current,
@@ -74,10 +75,12 @@ export async function getCaseStudyBySlug(slug: string) {
       },
       "testimonial": testimonial{ quote, author, role }
     }`,
-    { slug },
-  );
+    params: { slug },
+  });
+  return data;
 }
 
+// Uses client.fetch directly — called only from generateStaticParams (no request context)
 export async function getCaseStudySlugs() {
   return client.fetch(
     `*[_type == "portfolio" && isCaseStudy == true]{ "slug": slug.current }`,
@@ -87,8 +90,8 @@ export async function getCaseStudySlugs() {
 // ── Portfolio ───────────────────────────────────────────────────────────────
 
 export async function getTopPortfolios() {
-  const query = `
-    *[_type == "portfolio" && enabled == true]{
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolio" && enabled == true]{
       _id,
       title,
       description,
@@ -109,14 +112,14 @@ export async function getTopPortfolios() {
         },
         alt
       }
-    }
-  `;
-  return await client.fetch(query);
+    }`,
+  });
+  return data;
 }
 
 export async function getPortfolios() {
-  const query = `
-    *[_type == "portfolio"]{
+  const { data } = await sanityFetch({
+    query: `*[_type == "portfolio"]{
       _id,
       title,
       description,
@@ -130,7 +133,7 @@ export async function getPortfolios() {
         },
         alt
       }
-    }
-  `;
-  return await client.fetch(query);
+    }`,
+  });
+  return data;
 }

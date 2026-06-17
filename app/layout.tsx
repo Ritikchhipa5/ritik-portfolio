@@ -1,6 +1,7 @@
 import { DM_Sans, Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { SanityLive } from "@/sanity/lib/live";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -208,6 +209,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <>{children}</>
+        <SanityLive />
       </body>
     </html>
   );
