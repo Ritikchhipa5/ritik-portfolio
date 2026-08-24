@@ -40,9 +40,12 @@ function HeroSection() {
         >
           <Image
             src={IMAGES.ritik_full.src}
-            width={1600}
-            height={1600}
+            width={920}
+            height={1190}
             alt="Ritik"
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 90vw, 600px"
             className="z-10 h-full w-auto object-contain object-bottom"
           />
         </motion.div>

@@ -1,17 +1,39 @@
+import dynamic from "next/dynamic";
 import HeroSection from "@/app/(website)/(components)/hero-section";
 import ClientLogos from "@/app/(website)/(components)/client-logos";
 import MyGoal from "@/app/(website)/(components)/my-goal";
-import Portfolio from "@/app/(website)/(components)/portfolio";
-import Testimonials from "@/app/(website)/(components)/testimonials";
-import TechnologySection from "@/app/(website)/(components)/technology-section";
-import { ProcessSection } from "@/app/(website)/(components)/process-section";
-import BlogSection from "@/app/(website)/(components)/blog/blog-section";
-import WhatIBringSection from "@/app/(website)/(components)/what-i-bring";
-import FaqSection from "@/app/(website)/(components)/faq-section";
 import WorkWithMeSection from "@/app/(website)/(components)/work-with-me";
-import WhyChooseMeSection from "@/app/(website)/(components)/why-choose-me";
-import TeamSection from "@/app/(website)/(components)/team-section";
-import CaseStudiesSection from "@/app/(website)/(components)/case-studies-section";
+import TechnologySection from "@/app/(website)/(components)/technology-section";
+
+const Portfolio = dynamic(
+  () => import("@/app/(website)/(components)/portfolio")
+);
+const CaseStudiesSection = dynamic(
+  () => import("@/app/(website)/(components)/case-studies-section")
+);
+const WhatIBringSection = dynamic(
+  () => import("@/app/(website)/(components)/what-i-bring")
+);
+const WhyChooseMeSection = dynamic(
+  () => import("@/app/(website)/(components)/why-choose-me")
+);
+const TeamSection = dynamic(
+  () => import("@/app/(website)/(components)/team-section")
+);
+const ProcessSection = dynamic(() =>
+  import("@/app/(website)/(components)/process-section").then(
+    (mod) => mod.ProcessSection
+  )
+);
+const Testimonials = dynamic(
+  () => import("@/app/(website)/(components)/testimonials")
+);
+const BlogSection = dynamic(
+  () => import("@/app/(website)/(components)/blog/blog-section")
+);
+const FaqSection = dynamic(
+  () => import("@/app/(website)/(components)/faq-section")
+);
 
 export default function Home() {
   return (
