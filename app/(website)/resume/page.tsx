@@ -10,8 +10,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { BackgroundLines } from "@/components/ui/background-lines";
-import { Button } from "@/components/ui/button";
-import { LucideArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import CustomButton from "@/components/custom-btn";
 export default function Page() {
@@ -55,7 +53,7 @@ export default function Page() {
               <span> Resume Preview</span>
               <Link
                 href={
-                  "https://drive.google.com/file/d/1WJ8jcYVR4VFfCsNES50esrdgNJWCPcE-/view"
+                  "https://drive.google.com/file/d/1y4kHtpPmYHpbloBW3WuYiT2Cw5uzBxdF/view"
                 }
                 target="_blank"
               >
@@ -66,7 +64,7 @@ export default function Page() {
 
           {/* Iframe fills the modal */}
           <iframe
-            src="https://drive.google.com/file/d/1WJ8jcYVR4VFfCsNES50esrdgNJWCPcE-/preview"
+            src="https://drive.google.com/file/d/1y4kHtpPmYHpbloBW3WuYiT2Cw5uzBxdF/preview"
             allowFullScreen
             className="flex-1 w-full h-full"
           />

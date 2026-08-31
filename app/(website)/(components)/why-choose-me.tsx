@@ -34,7 +34,7 @@ const REASONS = [
 const STATS = [
   { value: "50+", label: "Projects" },
   { value: "4+",  label: "Years" },
-  { value: "98%", label: "Satisfaction" },
+  { value: "100%", label: "Satisfaction" },
   { value: "24h", label: "Response" },
 ];
 
