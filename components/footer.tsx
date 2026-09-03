@@ -58,7 +58,7 @@ function Footer() {
             >
               <CustomButton
                 onClick={() => push("/contact")}
-                label="Get Touch"
+                label="Book a Call"
               />
             </motion.div>
           </div>

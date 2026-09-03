@@ -190,7 +190,10 @@ const BottomSection = () => {
         </div>
       </div>
 
-      <CustomButton onClick={() => push("/contact")} label="Get Touch" />
+      <CustomButton
+        onClick={() => push("/contact")}
+        label="Book a Call"
+      />
 
       <div className="text-sm md:hidden block text-gray-700 font-dm-sans text-center max-w-xs">
         {hedline}
