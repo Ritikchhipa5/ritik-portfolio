@@ -1,8 +1,9 @@
 "use client";
 import { IMAGES } from "@/assets/images";
-import { Button } from "@/components/ui/button";
+
 import { routes } from "@/lib/constant";
-import { ArrowUp, ArrowUpRight, LucideArrowRight } from "lucide-react";
+
+import { MdOutlineStar } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -75,6 +76,27 @@ function Footer() {
                   height={64}
                   className="h-16 w-auto"
                 />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/services/page/228515310a152784a0/?viewAsBuyer=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ritik Chhipa on LinkedIn — 5.0 rating"
+                className="flex flex-col items-center gap-2 px-4 py-3 shrink-0 transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="/linkedin-logo.png"
+                  alt="LinkedIn"
+                  width={100}
+                  height={25}
+                  className="h-5 w-auto"
+                />
+                <span className="flex items-center gap-1.5">
+                  <MdOutlineStar size={16} className="text-[#c37d16]" />
+                  <span className="text-xs font-dm-sans font-semibold text-gray-900">
+                    5.0
+                  </span>
+                </span>
               </Link>
             </motion.div>
           </div>
