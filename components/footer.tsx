@@ -3,6 +3,7 @@ import { IMAGES } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/lib/constant";
 import { ArrowUp, ArrowUpRight, LucideArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
@@ -54,12 +55,27 @@ function Footer() {
               viewport={{
                 once: true,
               }}
-              className="flex justify-center my-10"
+              className="flex items-center justify-center gap-6 my-10"
             >
               <CustomButton
                 onClick={() => push("/contact")}
                 label="Book a Call"
               />
+              <Link
+                href="https://www.upwork.com/freelancers/~01567a14a1df3e84cd"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ritik Chhipa on Upwork — Top Rated"
+                className="shrink-0 transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="/upwork-top-rated.png"
+                  alt="Upwork Top Rated"
+                  width={64}
+                  height={64}
+                  className="h-16 w-auto"
+                />
+              </Link>
             </motion.div>
           </div>
           <motion.div
