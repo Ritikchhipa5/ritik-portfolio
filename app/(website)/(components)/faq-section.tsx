@@ -23,7 +23,7 @@ const FAQS = [
   {
     question: "What is your pricing?",
     answer:
-      "Pricing depends on the complexity and scope of the project. I offer both fixed-price packages for well-defined work and hourly rates for ongoing collaboration. Book a call or message me and I'll send you a custom quote within 24 hours.",
+      "Most projects range from $3,000 to $15,000 depending on scope — a landing page sits at the lower end, a full-stack product or mobile app at the higher end. I offer fixed-price packages for well-defined work and hourly rates for ongoing collaboration. Message me your requirements and I'll send a custom quote within 24 hours.",
   },
   {
     question: "Do you work with international clients?",

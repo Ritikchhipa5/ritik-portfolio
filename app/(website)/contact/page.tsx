@@ -17,6 +17,7 @@ export const metadata = {
 };
 
 import BlogSection from "@/app/(website)/(components)/blog/blog-section";
+import FaqSection from "@/app/(website)/(components)/faq-section";
 import WhoAmI from "@/app/(website)/(components)/who-am-i";
 import ContactSocialCards from "@/components/contact/contact-social-cards";
 import CalendlyButton from "@/app/(website)/contact/calendly-button";
@@ -101,6 +102,8 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      <FaqSection />
 
       <BlogSection />
     </>
