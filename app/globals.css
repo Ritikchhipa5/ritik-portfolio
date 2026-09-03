@@ -168,6 +168,11 @@ html {
 .animate-scroll {
   animation: scroll 60s linear infinite;
 }
+
+.cursor-none-all,
+.cursor-none-all * {
+  cursor: none !important;
+}
 .pause-on-hover:hover {
   animation-play-state: paused;
 }

@@ -2,6 +2,7 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import SiteCursor from "@/app/(website)/(components)/site-cursor";
 import { cn } from "@/lib/utils";
 import LenisGsapProvider from "@/provider/lenis-gsap-provider";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <LenisGsapProvider>
+      <SiteCursor />
       <div
         className={cn(
           "relative min-h-screen w-full bg-white",
