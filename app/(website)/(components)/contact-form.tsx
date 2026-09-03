@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion } from "framer-motion";
-import { Loader2, ArrowUpRight } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -31,7 +29,7 @@ const BUDGETS = ["Under $3k", "$3k – $8k", "$8k – $15k", "$15k+"];
 
 const contactFormSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
-  email: z.email("Enter a valid email").trim(),
+  email: z.email("Enter a valid email").trim().toLowerCase(),
   company: z.string().trim().optional(),
   projectType: z.string().optional(),
   budget: z.string().optional(),
@@ -40,9 +38,11 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-
+export default function ContactForm({
+  onSuccess,
+}: {
+  onSuccess?: () => void;
+}) {
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -65,29 +65,20 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error("Request failed");
 
-      setSubmitted(true);
       form.reset();
       toast.success("Message sent — I'll get back to you within 24 hours.");
+      onSuccess?.();
     } catch {
       toast.error("Something went wrong. Try emailing me directly instead.");
     }
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-16 mt-16"
-    >
-      {/* Form */}
-      <div className="md:col-span-3">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6 font-dm-sans"
-          >
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 font-dm-sans"
+      >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
@@ -100,7 +91,7 @@ export default function ContactForm() {
                     <FormControl>
                       <Input
                         placeholder="Your name"
-                        className="h-12 rounded-xl bg-card"
+                        className="h-12 rounded-2xl bg-neutral-50 border-neutral-200 focus-visible:border-black focus-visible:ring-0"
                         {...field}
                       />
                     </FormControl>
@@ -120,7 +111,7 @@ export default function ContactForm() {
                       <Input
                         type="email"
                         placeholder="you@company.com"
-                        className="h-12 rounded-xl bg-card"
+                        className="h-12 rounded-2xl bg-neutral-50 border-neutral-200 focus-visible:border-black focus-visible:ring-0"
                         {...field}
                       />
                     </FormControl>
@@ -141,7 +132,7 @@ export default function ContactForm() {
                   <FormControl>
                     <Input
                       placeholder="Company (optional)"
-                      className="h-12 rounded-xl bg-card"
+                      className="h-12 rounded-2xl bg-neutral-50 border-neutral-200 focus-visible:border-black focus-visible:ring-0"
                       {...field}
                     />
                   </FormControl>
@@ -161,7 +152,7 @@ export default function ContactForm() {
                     </FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-12 w-full rounded-xl bg-card">
+                        <SelectTrigger className="h-12 data-[size=default]:h-12 w-full rounded-2xl bg-neutral-50 border-neutral-200 data-[state=open]:border-black">
                           <SelectValue placeholder="Select..." />
                         </SelectTrigger>
                       </FormControl>
@@ -187,7 +178,7 @@ export default function ContactForm() {
                     </FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <FormControl>
-                        <SelectTrigger className="h-12 w-full rounded-xl bg-card">
+                        <SelectTrigger className="h-12 data-[size=default]:h-12 w-full rounded-2xl bg-neutral-50 border-neutral-200 data-[state=open]:border-black">
                           <SelectValue placeholder="Select..." />
                         </SelectTrigger>
                       </FormControl>
@@ -217,7 +208,7 @@ export default function ContactForm() {
                     <Textarea
                       rows={5}
                       placeholder="Tell me about your project..."
-                      className="rounded-xl bg-card resize-none"
+                      className="rounded-2xl bg-neutral-50 border-neutral-200 focus-visible:border-black focus-visible:ring-0 resize-none"
                       {...field}
                     />
                   </FormControl>
@@ -229,61 +220,14 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={form.formState.isSubmitting}
-              className="relative font-dm-sans font-medium text-sm rounded-full h-12 px-8 bg-black text-white flex items-center justify-center gap-2 w-full sm:w-auto transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full h-12 rounded-full bg-black text-white font-dm-sans font-medium text-sm flex items-center justify-center gap-2 transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {form.formState.isSubmitting ? (
-                <>
-                  <Loader2 size={16} className="animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  Send Message
-                  <ArrowUpRight size={16} />
-                </>
-              )}
+                <Loader2 size={16} className="animate-spin" />
+              ) : null}
+              {form.formState.isSubmitting ? "Sending..." : "Send Message"}
             </button>
-
-            {submitted && (
-              <p className="text-sm text-gray-500 font-dm-sans">
-                Thanks — I&apos;ll reply within 24 hours.
-              </p>
-            )}
-          </form>
-        </Form>
-      </div>
-
-      {/* Sidebar info */}
-      <div className="md:col-span-2 space-y-8 font-dm-sans">
-        <div>
-          <h3 className="text-sm font-medium text-gray-900 mb-2">Email</h3>
-          <a
-            href="mailto:ritikchhipa5@gmail.com"
-            className="text-gray-500 hover:text-gray-900 transition-colors text-base"
-          >
-            ritikchhipa5@gmail.com
-          </a>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-medium text-gray-900 mb-2">WhatsApp</h3>
-          <a
-            href="https://wa.me/919001586400"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-500 hover:text-gray-900 transition-colors text-base"
-          >
-            +91 90015 86400
-          </a>
-        </div>
-
-        <div className="pt-4 border-t">
-          <p className="text-gray-400 text-sm leading-relaxed">
-            I typically respond within 24 hours. For urgent inquiries, reach
-            out directly via WhatsApp or email.
-          </p>
-        </div>
-      </div>
-    </motion.div>
+      </form>
+    </Form>
   );
 }

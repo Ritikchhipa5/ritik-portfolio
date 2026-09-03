@@ -19,7 +19,6 @@ export const metadata = {
 import BlogSection from "@/app/(website)/(components)/blog/blog-section";
 import FaqSection from "@/app/(website)/(components)/faq-section";
 import WhoAmI from "@/app/(website)/(components)/who-am-i";
-import ContactForm from "@/app/(website)/(components)/contact-form";
 import ContactSocialCards from "@/components/contact/contact-social-cards";
 import CalendlyButton from "@/app/(website)/contact/calendly-button";
 
@@ -78,15 +77,6 @@ export default function ContactPage() {
           </a>
         </div>
       </div>
-      <section className="relative w-full py-10 md:py-20 px-4 max-w-5xl mx-auto">
-        <SectionHeading
-          primaryHeading="Get in touch"
-          secondHeading="Send me a message"
-          paragraph="Fill in a few details about your project and I'll get back to you within 24 hours."
-        />
-        <ContactForm />
-      </section>
-
       <WhoAmI />
 
       {/* Let me introduce myself */}
