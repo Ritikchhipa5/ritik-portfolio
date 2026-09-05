@@ -93,11 +93,14 @@ function ArticleContent({ body }: any) {
 
           // 🟥 CODE BLOCKS (full block, not inline)
           types: {
-            codeBlock: (props: any) => {
-              const { language, code } = props.value;
+            code: (props: any) => {
+              const { language, code, filename } = props.value;
               return (
-                <div className="my-6 p-1 relative text-sm border border-muted shadow-xs rounded-xl overflow-hidden ">
-                  <div className="flex top-2 right-2 absolute w-full justify-end gap-2 text-xs items-center">
+                <div className="my-6 relative text-sm border border-muted shadow-xs rounded-xl overflow-hidden bg-[#fafafa]">
+                  <div className="flex items-center justify-between px-4 py-2 border-b border-muted bg-muted/40">
+                    <span className="text-xs font-dm-sans text-muted-foreground">
+                      {filename || language}
+                    </span>
                     <CopyButton
                       onClick={() => {
                         navigator.clipboard.writeText(code);
@@ -110,8 +113,10 @@ function ArticleContent({ body }: any) {
                   <SyntaxHighlighter
                     showLineNumbers
                     customStyle={{
-                      padding: 10,
-                      borderRadius: 10,
+                      padding: 16,
+                      margin: 0,
+                      borderRadius: 0,
+                      background: "transparent",
                     }}
                     language={language}
                     style={codeStyle}
@@ -128,7 +133,7 @@ function ArticleContent({ body }: any) {
                 height={700}
                 src={value?.asset?.url}
                 alt={value?.alt || "Image"}
-                className="rounded-lg my-6"
+                className="rounded-2xl my-8"
               />
             ),
           },
