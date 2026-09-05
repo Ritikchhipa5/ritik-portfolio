@@ -1,13 +1,21 @@
 "use client";
 
 import { Menu, X, ArrowRight } from "lucide-react";
-import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { Logo } from "@/components/logo";
 import { useEffect, useRef, useState } from "react";
 
 import { routes } from "@/lib/constant";
 import { useRouter } from "next/navigation";
 import { getLenis } from "@/provider/lenis-gsap-provider";
+import { useHoverSound } from "@/hooks/use-hover-sound";
+
+const NAV_NOTE_SCALE = [523.25, 587.33, 659.25, 698.46, 783.99, 880.0, 987.77];
 
 const LOGO_WRAPPER_VARIANTS = {
   center: {
@@ -35,6 +43,9 @@ export default function Header({ transition }: { transition: boolean }) {
   const lastScrollY = useRef(0);
   const hideY = useMotionValue(0);
   const springY = useSpring(hideY, { stiffness: 300, damping: 30 });
+  const playHoverTune = useHoverSound({
+    volume: 0.08,
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -76,7 +87,6 @@ export default function Header({ transition }: { transition: boolean }) {
       className="z-40 flex items-center justify-center "
     >
       <div className="relative max-w-7xl size-full">
-
         {transition ? (
           <motion.div
             onClick={() => push("/")}
@@ -114,6 +124,7 @@ export default function Header({ transition }: { transition: boolean }) {
         >
           <button
             onClick={() => setMenuOpen(!menuOpen)}
+            onMouseEnter={() => playHoverTune()}
             className="h-8 w-8 rounded-full bg-black/5 hover:bg-black/10 cursor-pointer transition-colors flex items-center justify-center"
           >
             <Menu size={14} />
@@ -145,9 +156,12 @@ export default function Header({ transition }: { transition: boolean }) {
               >
                 {/* Header row */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-black/[0.06]">
-                  <span className="font-newsreader italic text-lg font-light text-gray-500">Menu</span>
+                  <span className="font-newsreader italic text-lg font-light text-gray-500">
+                    Menu
+                  </span>
                   <button
                     onClick={() => setMenuOpen(false)}
+                    onMouseEnter={() => playHoverTune()}
                     className="h-8 w-8 rounded-full bg-black hover:bg-neutral-800 flex items-center justify-center text-white transition-colors"
                   >
                     <X size={13} />
@@ -159,14 +173,29 @@ export default function Header({ transition }: { transition: boolean }) {
                   {routes.map((item, i) => (
                     <motion.button
                       key={item.link}
-                      onClick={() => { setMenuOpen(false); push(item.link); }}
+                      onClick={() => {
+                        setMenuOpen(false);
+                        push(item.link);
+                      }}
+                      onMouseEnter={() =>
+                        playHoverTune(NAV_NOTE_SCALE[i % NAV_NOTE_SCALE.length])
+                      }
                       initial={{ opacity: 0, x: 24 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + i * 0.06, duration: 0.35, ease: "easeOut" }}
+                      transition={{
+                        delay: 0.05 + i * 0.06,
+                        duration: 0.35,
+                        ease: "easeOut",
+                      }}
                       className="group flex items-center justify-between px-4 py-3 rounded-xl text-gray-800 hover:bg-black/5 transition-colors text-left w-full"
                     >
-                      <span className="font-dm-sans text-base font-medium">{item.label}</span>
-                      <ArrowRight size={14} className="text-neutral-300  group-hover:text-neutral-700 group-hover:translate-x-1 transition-all duration-200" />
+                      <span className="font-dm-sans text-base font-medium">
+                        {item.label}
+                      </span>
+                      <ArrowRight
+                        size={14}
+                        className="text-neutral-300  group-hover:text-neutral-700 group-hover:translate-x-1 transition-all duration-200"
+                      />
                     </motion.button>
                   ))}
                 </nav>
