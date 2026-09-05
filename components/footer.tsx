@@ -15,14 +15,14 @@ function Footer() {
   return (
     <footer className="w-full  relative bg-white pt-16 ">
       <div
-        className="absolute inset-0 bg-contain bg-no-repeat bg-top opacity-90"
+        className="absolute inset-0 bg-cover bg-no-repeat bg-top opacity-90"
         style={{
           backgroundImage: `url(${IMAGES.ellipse_footer.src})`,
         }}
       />
       {/* Navigation */}
       <div className="z-10 relative overflow-hidden">
-        <div className="max-w-7xl px-4 mx-auto  ">
+        <div className="px-6 sm:px-10 w-full">
           <div className="w-full text-center space-y-4 ">
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
