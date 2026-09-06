@@ -12,7 +12,39 @@ const contactSchema = z.object({
   message: z.string().trim().min(1).max(5000),
 });
 
+const RATE_LIMIT_MAX = 3;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const submissionsByIp = new Map<string, number[]>();
+
+function isRateLimited(ip: string) {
+  const now = Date.now();
+  const timestamps = (submissionsByIp.get(ip) ?? []).filter(
+    (t) => now - t < RATE_LIMIT_WINDOW_MS,
+  );
+
+  if (timestamps.length >= RATE_LIMIT_MAX) {
+    submissionsByIp.set(ip, timestamps);
+    return true;
+  }
+
+  timestamps.push(now);
+  submissionsByIp.set(ip, timestamps);
+  return false;
+}
+
 export async function POST(req: Request) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Too many messages sent. Please try again in a few minutes." },
+      { status: 429 },
+    );
+  }
+
   const body = await req.json().catch(() => null);
   const parsed = contactSchema.safeParse(body);
 

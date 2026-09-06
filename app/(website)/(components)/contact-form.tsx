@@ -63,13 +63,20 @@ export default function ContactForm({
         body: JSON.stringify(values),
       });
 
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Request failed");
+      }
 
       form.reset();
       toast.success("Message sent — I'll get back to you within 24 hours.");
       onSuccess?.();
-    } catch {
-      toast.error("Something went wrong. Try emailing me directly instead.");
+    } catch (err) {
+      toast.error(
+        err instanceof Error && err.message !== "Request failed"
+          ? err.message
+          : "Something went wrong. Try emailing me directly instead."
+      );
     }
   };
 

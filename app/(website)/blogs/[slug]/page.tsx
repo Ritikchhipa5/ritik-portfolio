@@ -1,11 +1,14 @@
-import { getPostBySlug } from "@/api/articles";
+import { getPostBySlug, getTopPosts } from "@/api/articles";
 import Image from "next/image";
+import Link from "next/link";
 import moment from "moment";
 
 import { notFound } from "next/navigation";
 
 import { BackButton } from "@/app/(website)/blogs/[slug]/back-button";
 import ArticleContent from "@/app/(website)/blogs/[slug]/article-copy-button";
+import SectionHeading from "@/app/(website)/(components)/section-heading";
+import BlogList from "@/app/(website)/(components)/blog/blog-list";
 
 interface ArticlePageProps {
   params: {
@@ -72,6 +75,22 @@ async function ArticlePage({ params }: ArticlePageProps) {
     mainImage: article.mainImage?.asset?.url ?? "",
   };
 
+  const allPosts = await getTopPosts();
+  const morePosts = (allPosts ?? [])
+    .filter((p: any) => p?.slug?.current !== slug)
+    .slice(0, 3)
+    .map((p: any) => ({
+      title: p?.title || "",
+      slug: p?.slug?.current || "",
+      publishedDate: p?.publishedAt || "",
+      description: p?.description || "",
+      mainImage: p?.mainImage?.asset?.url || "",
+      author: {
+        name: p?.author?.name || "",
+        image: p?.author?.image?.asset?._ref || "",
+      },
+    }));
+
   return (
     <div className="relative w-full     py-20 bg-white overflow-hidden">
       <div className="relative z-10 max-w-2xl mx-auto w-full px-4 text-center">
@@ -101,6 +120,23 @@ async function ArticlePage({ params }: ArticlePageProps) {
           <ArticleContent body={pageData?.body} />
         </div>
       </div>
+
+      {morePosts.length > 0 && (
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 mt-24">
+          <SectionHeading primaryHeading="Keep Reading" secondHeading="More Posts" />
+
+          <BlogList posts={morePosts} />
+
+          <div className="flex justify-center mt-16">
+            <Link
+              href="/blogs"
+              className="rounded-full h-12 px-8 flex items-center justify-center bg-black text-white font-dm-sans font-medium text-sm hover:opacity-90 transition-opacity"
+            >
+              View All Posts
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

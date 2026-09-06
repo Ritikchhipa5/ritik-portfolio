@@ -79,16 +79,21 @@ function ArticleContent({ body }: any) {
               </code>
             ),
 
-            link: ({ value, children }: any) => (
-              <a
-                href={value?.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline hover:text-blue-800"
-              >
-                {children}
-              </a>
-            ),
+            link: ({ value, children }: any) => {
+              const href = value?.href || "";
+              const isExternal = /^https?:\/\//.test(href);
+              return (
+                <a
+                  href={href}
+                  {...(isExternal
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="text-lime-600 underline decoration-lime-400 underline-offset-2 font-medium hover:text-lime-700 hover:decoration-lime-600 transition-colors"
+                >
+                  {children}
+                </a>
+              );
+            },
           },
 
           // 🟥 CODE BLOCKS (full block, not inline)
@@ -127,15 +132,22 @@ function ArticleContent({ body }: any) {
               );
             },
 
-            image: ({ value }) => (
-              <Image
-                width={1200}
-                height={700}
-                src={value?.asset?.url}
-                alt={value?.alt || "Image"}
-                className="rounded-2xl my-8"
-              />
-            ),
+            image: ({ value }) => {
+              const dimensions = value?.asset?.metadata?.dimensions;
+              const width = dimensions?.width || 1200;
+              const height = dimensions?.height || 700;
+              return (
+                <span className="my-8 block overflow-hidden rounded-2xl border border-black/5 shadow-xs">
+                  <Image
+                    width={width}
+                    height={height}
+                    src={value?.asset?.url}
+                    alt={value?.alt || "Image"}
+                    className="h-auto w-full object-cover"
+                  />
+                </span>
+              );
+            },
           },
         }}
       />

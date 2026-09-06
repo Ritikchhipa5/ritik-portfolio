@@ -21,7 +21,13 @@ export async function getPostBySlug(slug: string) {
         title
       },
       publishedAt,
-      body
+      body[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      }
     }`,
     params: { slug },
   });
@@ -54,7 +60,13 @@ export async function getTopPosts() {
         title
       },
       publishedAt,
-      body
+      body[]{
+        ...,
+        _type == "image" => {
+          ...,
+          asset->
+        }
+      }
     }`,
   });
   return data;

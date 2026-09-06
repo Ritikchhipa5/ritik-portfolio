@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import SectionHeading from "@/app/(website)/(components)/section-heading";
 import { motion } from "framer-motion";
+import { useHoverSound } from "@/hooks/use-hover-sound";
 
 const FAQS = [
   {
@@ -38,6 +39,8 @@ const FAQS = [
 ];
 
 export default function FaqSection() {
+  const playOpenTune = useHoverSound({ frequency: 587.33, duration: 0.12, volume: 0.06 });
+
   return (
     <section id="faq" className="relative py-10 md:py-20 px-4 max-w-7xl mx-auto">
       <SectionHeading
@@ -52,7 +55,14 @@ export default function FaqSection() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="mt-12 max-w-3xl mx-auto"
       >
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full"
+          onValueChange={(value) => {
+            if (value) playOpenTune();
+          }}
+        >
           {FAQS.map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`}>
               <AccordionTrigger className="text-base font-dm-sans font-medium text-left no-underline hover:no-underline py-5">
