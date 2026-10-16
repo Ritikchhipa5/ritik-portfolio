@@ -36,6 +36,17 @@ const GLOBE_CONFIG: COBEOptions = {
   ],
 };
 
+// Probe on a throwaway canvas: calling getContext on the real canvas would
+// lock in a context type before cobe gets to choose one.
+function hasWebGL() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
 export function Globe({
   className,
   config = GLOBE_CONFIG,
@@ -81,21 +92,33 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
-    const globe = createGlobe(canvasRef.current!, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
-      onRender: (state) => {
-        if (!pointerInteracting.current) phi += 0.005;
-        state.phi = phi + rs.get();
-        state.width = width * 2;
-        state.height = width * 2;
-      },
-    });
+    // cobe crashes with "Cannot read properties of null (reading 'enable')"
+    // when WebGL is unavailable (hardware acceleration off, blocklisted GPU),
+    // so skip the globe instead of taking down the whole page.
+    let globe: ReturnType<typeof createGlobe> | null = null;
+    if (canvasRef.current && hasWebGL()) {
+      try {
+        globe = createGlobe(canvasRef.current, {
+          ...config,
+          width: width * 2,
+          height: width * 2,
+          onRender: (state) => {
+            if (!pointerInteracting.current) phi += 0.005;
+            state.phi = phi + rs.get();
+            state.width = width * 2;
+            state.height = width * 2;
+          },
+        });
+        setTimeout(() => {
+          if (canvasRef.current) canvasRef.current.style.opacity = "1";
+        }, 0);
+      } catch (err) {
+        console.warn("Globe disabled: WebGL failed to initialise", err);
+      }
+    }
 
-    setTimeout(() => (canvasRef.current!.style.opacity = "1"), 0);
     return () => {
-      globe.destroy();
+      globe?.destroy();
       window.removeEventListener("resize", onResize);
     };
   }, [rs, config]);
