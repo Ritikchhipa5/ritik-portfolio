@@ -1,0 +1,15 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "fix/globe-webgl",
+    "main"
+  ],
+  "parent": {
+    "fix/globe-webgl": "main",
+    "main": null
+  },
+  "order": [
+    "main",
+    "fix/globe-webgl"
+  ]
+}
